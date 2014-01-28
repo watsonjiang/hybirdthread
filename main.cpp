@@ -1,123 +1,83 @@
 #include <stdio.h>
-#include <ucontext.h>
-#include <unistd.h>
-#include <pthread.h>
-#include <unistd.h>
-#include "queue.h"
-#include "pth.h"
-#include "pth_p.h"
-#include <memory.h>
-struct Task 
+#include "hybird.h"
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <netdb.h>
+#include <queue>
+#include <string>
+
+std::queue<std::string> msg_queue;
+pth_mutex_t msg_queue_lock = PTH_MUTEX_INIT;
+pth_cond_t msg_queue_cond_not_empty = PTH_COND_INIT;
+
+void * handler(void * arg)
 {
-   ucontext_t task_ctx;
-   pth_t th;
-   int status; // 0 - onging, 1 - finished.
-};
-
-Queue<Task *> g_taskqueue(128);
-
-pthread_key_t _tls_key;
-
-void* f1(void *)
-{
-   int counter = 0;
-   for(;;){
-      counter ++;
-      if( counter % 90000000 == 0)
-      {
-         //printf("in f1 counter %d\n", counter);
-         counter = counter % 90000000000;
-         pth_yield(NULL);
-      }
-   }
-}
-
-int checker(void * status)
-{
-   int s = *((int*) status);
-   return s;
-}
-
-#define START_BLOCKING_IO_BLOCK() { \
-   Task * task = new Task(); \
-   pthread_t pthreadid = pthread_self(); \
-   task->status = 0; \
-   task->th = pth_self(); \
-   getcontext(&(task->task_ctx)); \
-   if(pthreadid == pthread_self()) \
-   { \
-      pth_event_t e = pth_event(PTH_EVENT_FUNC, checker, &(task->status), pth_time(0, 500)); \
-      g_taskqueue.push(task); \
-      pth_wait(e); \
-      delete task; \
-   }else{ 
-
-#define END_BLOCKING_IO_BLOCK() } \
-   task->status = 1; \
-   ucontext_t * worker_ctx = (ucontext_t*)pthread_getspecific(_tls_key); \
-   setcontext(worker_ctx); \
-   }
-
-
-void* f2(void *)
-{
-   for(;;){
-      START_BLOCKING_IO_BLOCK()
-        printf("seperate thread in f2, start to do blocking stuff. thread id %d\n", pthread_self());
-        sleep(1);
-        printf("f2 done.thread id %d\n", pthread_self());
-      END_BLOCKING_IO_BLOCK() 
-      printf("f2 finished blocing io. thread id %d\n", pthread_self());
-   }
-}
-
-void * f3(void*)
-{
-   for(;;){
-      START_BLOCKING_IO_BLOCK()
-        printf("seperate thread in f3, start to do blocking stuff. thread id %d\n", pthread_self());
-        sleep(1);
-        printf("f3 done.thread id %d\n", pthread_self());
-      END_BLOCKING_IO_BLOCK() 
-      printf("f3 finished blocing io. thread id %d\n", pthread_self());
-   }
-}
-
-void * async_worker(void *id)
-{
-   ucontext_t worker_ctx;
-   pthread_setspecific(_tls_key, &worker_ctx);
-   char *stack = (char*) malloc(256 * 1024);
-   for(;;)
+   int fd = (int)arg;
+   char buf[100] = {0};
+   while(1)
    {
-      Task * task = g_taskqueue.pop();
-      ucontext tmp = task->task_ctx;
-      memcpy(stack, task->th->stack, task->th->stacksize);
-      tmp.uc_mcontext.gregs[REG_RBP] = (greg_t)stack + (task->task_ctx.uc_mcontext.gregs[REG_RBP] - (greg_t)task->th->stack);
-      tmp.uc_mcontext.gregs[REG_RSP] = (greg_t)stack + (task->task_ctx.uc_mcontext.gregs[REG_RSP] - (greg_t)task->th->stack);
-      swapcontext(&worker_ctx, &tmp);
+      printf("4%$%%%%%%%%%\n");
+      int len = pth_read(fd, buf, 100);
+      if(len == 0)
+      {
+         close(fd);
+         return NULL;
+      }
+      buf[len] = 0;
+      pth_write(fd, buf, len);  //echo server
+      pth_mutex_acquire(&msg_queue_lock, FALSE, NULL);
+      msg_queue.push(std::string(buf));
+      pth_cond_notify(&msg_queue_cond_not_empty, FALSE);
+      pth_mutex_release(&msg_queue_lock);
+   }
+   return NULL;
+}
+
+void * replication(void * arg)
+{
+   while(1)
+   {
+      printf("1@@@@@@@@@\n");
+      pth_mutex_acquire(&msg_queue_lock, FALSE, NULL);
+      pth_cond_await(&msg_queue_cond_not_empty, &msg_queue_lock, NULL);
+      std::string v = msg_queue.front();
+      msg_queue.pop();
+      pth_mutex_release(&msg_queue_lock);
+      printf("replicate %s", v.c_str());
    }
 }
 
 int main(int argc, const char *argv[])
 {
-
-   pthread_t  t1;
-   pthread_key_create(&_tls_key, NULL);
-   pthread_create(&t1, NULL, async_worker, NULL);
-   pthread_create(&t1, NULL, async_worker, NULL);
-   sleep(3);
-   
-   pth_init();
+   sockaddr_in sar;
+   protoent *pe;
+   sockaddr_in peer_addr;
+   int peer_len;
+   int sa, sw;
+   hybird_init(2);
+   signal(SIGPIPE, SIG_IGN);
    pth_attr_t attr = pth_attr_new();
-   pth_attr_set(attr, PTH_ATTR_NAME, "f1");
+   pth_attr_set(attr, PTH_ATTR_NAME, "replicator");
    pth_attr_set(attr, PTH_ATTR_STACK_SIZE, 256*1024);
-   pth_attr_set(attr, PTH_ATTR_JOINABLE, TRUE);
-   pth_t pf1 = pth_spawn(attr, f1, NULL);
-   pth_t pf2 = pth_spawn(attr, f2, NULL);
-   pth_t pf3 = pth_spawn(attr, f3, NULL);
+   pth_attr_set(attr, PTH_ATTR_JOINABLE, FALSE);
+   pth_spawn(attr, replication, NULL);
 
-   pth_join(pf1, NULL);
-   pthread_join(t1, NULL);
+   pth_attr_set(attr, PTH_ATTR_NAME, "handler");
+   pe = getprotobyname("tcp");
+   sa = socket(AF_INET, SOCK_STREAM, pe->p_proto);
+   sar.sin_family = AF_INET;
+   sar.sin_addr.s_addr = INADDR_ANY;
+   sar.sin_port = htons(9999);
+   bind(sa, (struct sockaddr*)&sar, sizeof(struct sockaddr_in));
+   listen(sa, 10);
+
+   for(;;)
+   {
+      printf("3#####i\n");
+      peer_len = sizeof(peer_addr);
+      sw = pth_accept(sa, (struct sockaddr *)&peer_addr, &peer_len);
+      pth_spawn(attr, handler, (void*)sw);
+   }
+
    return 0;
 }
