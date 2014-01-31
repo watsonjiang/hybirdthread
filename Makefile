@@ -1,13 +1,12 @@
 
 CXXFLAGS=-g \
          -I./pth \
-         -fpermissive
 
 LDFLAGS=-g \
         -lpthread \
-        -L./pth/.libs -lpth
+        -lpth
 
-OBJS=main.o
+OBJS=main.o ht.o
 
 BINS=a.out
 
