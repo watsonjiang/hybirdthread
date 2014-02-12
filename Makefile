@@ -1,20 +1,27 @@
 
 CXXFLAGS=-g \
-         -I./pth \
+         -fpic \
+         -Wall \
+         -Werror \
+         -Wfatal-errors
+         
 
 LDFLAGS=-g \
-        -lpthread \
-        -lpth
+        -shared \
+        -lpthread 
 
-OBJS=main.o ht.o
+CC=gcc 
 
-BINS=a.out
+OBJS=ht_errno.o ht_debug.o
+
+BINS=libht.so
+
+TEST_BINS=queue_test ht_test
 
 all: $(BINS)
 
+libht.so: $(OBJS)
 
-$(BINS):$(OBJS)   
-	g++ $(LDFLAGS) -o $@ $^ 
 
 clean:
 	rm -rf a.out *.o

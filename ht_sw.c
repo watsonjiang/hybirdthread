@@ -1,7 +1,7 @@
 #include "ht.h"
 #include <ucontext.h>
 #include <pth.h>
-#include <pth_p.h>
+#include "pth_p.h"
 #include <pthread.h>
 #include <memory.h>
 #include "queue.h"
