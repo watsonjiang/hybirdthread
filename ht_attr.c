@@ -1,6 +1,5 @@
 #include "ht.h"
 #include "ht_p.h"
-#if cpp
 
 enum {
     HT_ATTR_GET,
@@ -17,8 +16,6 @@ struct ht_attr_st {
     unsigned int a_stacksize;
     char        *a_stackaddr;
 };
-
-#endif /* cpp */
 
 ht_attr_t ht_attr_of(ht_t t)
 {
@@ -89,7 +86,7 @@ int ht_attr_set(ht_attr_t a, int op, ...)
     return rc;
 }
 
-intern int ht_attr_ctrl(int cmd, ht_attr_t a, int op, va_list ap)
+int ht_attr_ctrl(int cmd, ht_attr_t a, int op, va_list ap)
 {
     if (a == NULL)
         return ht_error(FALSE, EINVAL);

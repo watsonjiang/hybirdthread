@@ -616,8 +616,8 @@ dopr_outch(
     return;
 }
 
-intern int
-pth_vsnprintf(
+int
+ht_vsnprintf(
     char *str,
     size_t count,
     const char *fmt,
@@ -631,8 +631,8 @@ pth_vsnprintf(
     return retlen;
 }
 
-intern int
-pth_snprintf(
+int
+ht_snprintf(
     char *str,
     size_t count,
     const char *fmt,
@@ -642,28 +642,28 @@ pth_snprintf(
     int rv;
 
     va_start(ap, fmt);
-    rv = pth_vsnprintf(str, count, fmt, ap);
+    rv = ht_vsnprintf(str, count, fmt, ap);
     va_end(ap);
     return rv;
 }
 
-intern char *
-pth_vasprintf(
+char *
+ht_vasprintf(
     const char *fmt,
     va_list ap)
 {
     char *rv;
     int n;
 
-    n = pth_vsnprintf(NULL, -1, fmt, ap);
+    n = ht_vsnprintf(NULL, -1, fmt, ap);
     if ((rv = (char *)malloc(n+1)) == NULL)
         return NULL;
-    pth_vsnprintf(rv, n+1, fmt, ap);
+    ht_vsnprintf(rv, n+1, fmt, ap);
     return rv;
 }
 
-intern char *
-pth_asprintf(
+char *
+ht_asprintf(
     const char *fmt,
     ...)
 {
@@ -671,7 +671,7 @@ pth_asprintf(
     char *rv;
 
     va_start(ap, fmt);
-    rv = pth_vasprintf(fmt, ap);
+    rv = ht_vasprintf(fmt, ap);
     va_end(ap);
     return rv;
 }

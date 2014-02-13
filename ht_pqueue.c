@@ -1,45 +1,10 @@
 /*
-**  GNU Pth - The GNU Portable Threads
-**  Copyright (c) 1999-2006 Ralf S. Engelschall <rse@engelschall.com>
-**
-**  This file is part of GNU Pth, a non-preemptive thread scheduling
-**  library which can be found at http://www.gnu.org/software/pth/.
-**
-**  This library is free software; you can redistribute it and/or
-**  modify it under the terms of the GNU Lesser General Public
-**  License as published by the Free Software Foundation; either
-**  version 2.1 of the License, or (at your option) any later version.
-**
-**  This library is distributed in the hope that it will be useful,
-**  but WITHOUT ANY WARRANTY; without even the implied warranty of
-**  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-**  Lesser General Public License for more details.
-**
-**  You should have received a copy of the GNU Lesser General Public
-**  License along with this library; if not, write to the Free Software
-**  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
-**  USA, or contact Ralf S. Engelschall <rse@engelschall.com>.
-**
-**  pth_pqueue.c: Pth thread priority queues
+** priority queue implementation
 */
-                             /* ``Real hackers can write assembly
-                                  code in any language''
-                                                   -- Unknown */
-#include "pth_p.h"
-
-#if cpp
-
-/* thread priority queue */
-struct pth_pqueue_st {
-    pth_t q_head;
-    int   q_num;
-};
-typedef struct pth_pqueue_st pth_pqueue_t;
-
-#endif /* cpp */
+#include "ht_p.h"
 
 /* initialize a priority queue; O(1) */
-intern void pth_pqueue_init(pth_pqueue_t *q)
+void ht_pqueue_init(ht_pqueue_t *q)
 {
     if (q != NULL) {
         q->q_head = NULL;
@@ -49,9 +14,9 @@ intern void pth_pqueue_init(pth_pqueue_t *q)
 }
 
 /* insert thread into priority queue; O(n) */
-intern void pth_pqueue_insert(pth_pqueue_t *q, int prio, pth_t t)
+void ht_pqueue_insert(ht_pqueue_t *q, int prio, ht_t t)
 {
-    pth_t c;
+    ht_t c;
     int p;
 
     if (q == NULL)
@@ -94,9 +59,9 @@ intern void pth_pqueue_insert(pth_pqueue_t *q, int prio, pth_t t)
 }
 
 /* remove thread with maximum priority from priority queue; O(1) */
-intern pth_t pth_pqueue_delmax(pth_pqueue_t *q)
+ht_t ht_pqueue_delmax(ht_pqueue_t *q)
 {
-    pth_t t;
+    ht_t t;
 
     if (q == NULL)
         return NULL;
@@ -125,7 +90,7 @@ intern pth_t pth_pqueue_delmax(pth_pqueue_t *q)
 }
 
 /* remove thread from priority queue; O(n) */
-intern void pth_pqueue_delete(pth_pqueue_t *q, pth_t t)
+void ht_pqueue_delete(ht_pqueue_t *q, ht_t t)
 {
     if (q == NULL)
         return;
@@ -163,12 +128,12 @@ intern void pth_pqueue_delete(pth_pqueue_t *q, pth_t t)
 
 /* determine priority required to favorite a thread; O(1) */
 #if cpp
-#define pth_pqueue_favorite_prio(q) \
-    ((q)->q_head != NULL ? (q)->q_head->q_prio + 1 : PTH_PRIO_MAX)
+#define ht_pqueue_favorite_prio(q) \
+    ((q)->q_head != NULL ? (q)->q_head->q_prio + 1 : HT_PRIO_MAX)
 #endif
 
 /* move a thread inside queue to the top; O(n) */
-intern int pth_pqueue_favorite(pth_pqueue_t *q, pth_t t)
+int ht_pqueue_favorite(ht_pqueue_t *q, ht_t t)
 {
     if (q == NULL)
         return FALSE;
@@ -178,13 +143,13 @@ intern int pth_pqueue_favorite(pth_pqueue_t *q, pth_t t)
     if (q->q_num == 1)
         return TRUE;
     /* move to top */
-    pth_pqueue_delete(q, t);
-    pth_pqueue_insert(q, pth_pqueue_favorite_prio(q), t);
+    ht_pqueue_delete(q, t);
+    ht_pqueue_insert(q, ht_pqueue_favorite_prio(q), t);
     return TRUE;
 }
 
 /* increase priority of all(!) threads in queue; O(1) */
-intern void pth_pqueue_increase(pth_pqueue_t *q)
+void ht_pqueue_increase(ht_pqueue_t *q)
 {
     if (q == NULL)
         return;
@@ -195,20 +160,8 @@ intern void pth_pqueue_increase(pth_pqueue_t *q)
     return;
 }
 
-/* return number of elements in priority queue: O(1) */
-#if cpp
-#define pth_pqueue_elements(q) \
-    ((q) == NULL ? (-1) : (q)->q_num)
-#endif
-
-/* walk to first thread in queue; O(1) */
-#if cpp
-#define pth_pqueue_head(q) \
-    ((q) == NULL ? NULL : (q)->q_head)
-#endif
-
 /* walk to last thread in queue */
-intern pth_t pth_pqueue_tail(pth_pqueue_t *q)
+ht_t ht_pqueue_tail(ht_pqueue_t *q)
 {
     if (q == NULL)
         return NULL;
@@ -218,18 +171,18 @@ intern pth_t pth_pqueue_tail(pth_pqueue_t *q)
 }
 
 /* walk to next or previous thread in queue; O(1) */
-intern pth_t pth_pqueue_walk(pth_pqueue_t *q, pth_t t, int direction)
+ht_t ht_pqueue_walk(ht_pqueue_t *q, ht_t t, int direction)
 {
-    pth_t tn;
+    ht_t tn;
 
     if (q == NULL || t == NULL)
         return NULL;
     tn = NULL;
-    if (direction == PTH_WALK_PREV) {
+    if (direction == HT_WALK_PREV) {
         if (t != q->q_head)
             tn = t->q_prev;
     }
-    else if (direction == PTH_WALK_NEXT) {
+    else if (direction == HT_WALK_NEXT) {
         tn = t->q_next;
         if (tn == q->q_head)
             tn = NULL;
@@ -238,14 +191,14 @@ intern pth_t pth_pqueue_walk(pth_pqueue_t *q, pth_t t, int direction)
 }
 
 /* check whether a thread is in a queue; O(n) */
-intern int pth_pqueue_contains(pth_pqueue_t *q, pth_t t)
+int ht_pqueue_contains(ht_pqueue_t *q, ht_t t)
 {
-    pth_t tc;
+    ht_t tc;
     int found;
 
     found = FALSE;
-    for (tc = pth_pqueue_head(q); tc != NULL;
-         tc = pth_pqueue_walk(q, tc, PTH_WALK_NEXT)) {
+    for (tc = ht_pqueue_head(q); tc != NULL;
+         tc = ht_pqueue_walk(q, tc, HT_WALK_NEXT)) {
         if (tc == t) {
             found = TRUE;
             break;

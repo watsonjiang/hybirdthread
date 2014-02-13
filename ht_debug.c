@@ -21,7 +21,7 @@ void ht_debug(const char *file, int line, int argc, const char *fmt, ...)
         va_end(ap);
         n = strlen(str);
         str[n++] = '\n';
-        ht_sc(write)(STDERR_FILENO, str, n);
+        write(STDERR_FILENO, str, n);
     }
     return;
 }
@@ -30,7 +30,7 @@ void ht_debug(const char *file, int line, int argc, const char *fmt, ...)
 void ht_dumpstate(FILE *fp)
 {
     fprintf(fp, "+----------------------------------------------------------------------\n");
-    fprintf(fp, "| Pth Version: %s\n", PTH_VERSION_STR);
+    fprintf(fp, "| Pth Version: %s\n", HT_VERSION_STR);
     fprintf(fp, "| Load Average: %.2f\n", ht_loadval);
     ht_dumpqueue(fp, "NEW", &ht_NQ);
     ht_dumpqueue(fp, "READY", &ht_RQ);
@@ -55,7 +55,7 @@ void ht_dumpqueue(FILE *fp, const char *qn, ht_pqueue_t *q)
     if (n == 0)
         fprintf(fp, "|   no threads\n");
     i = 1;
-    for (t = ht_pqueue_head(q); t != NULL; t = ht_pqueue_walk(q, t, PTH_WALK_NEXT)) {
+    for (t = ht_pqueue_head(q); t != NULL; t = ht_pqueue_walk(q, t, HT_WALK_NEXT)) {
         fprintf(fp, "|   %d. thread 0x%lx (\"%s\")\n", i++, (unsigned long)t, t->name);
     }
     return;
