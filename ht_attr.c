@@ -1,22 +1,6 @@
 #include "ht.h"
 #include "ht_p.h"
 
-enum {
-    HT_ATTR_GET,
-    HT_ATTR_SET
-};
-
-struct ht_attr_st {
-    ht_t        a_tid;
-    int          a_prio;
-    int          a_dispatches;
-    char         a_name[HT_TCB_NAMELEN];
-    int          a_joinable;
-    unsigned int a_cancelstate;
-    unsigned int a_stacksize;
-    char        *a_stackaddr;
-};
-
 ht_attr_t ht_attr_of(ht_t t)
 {
     ht_attr_t a;

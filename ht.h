@@ -406,7 +406,6 @@ extern int            ht_nap(ht_time_t);
 extern int            ht_wait(ht_event_t);
 extern int            ht_cancel(ht_t);
 extern int            ht_abort(ht_t);
-extern int            ht_raise(ht_t, int);
 extern int            ht_join(ht_t, void **);
 extern void           ht_exit(void *);
 
@@ -448,11 +447,6 @@ extern int            ht_msgport_reply(ht_message_t *);
 extern int            ht_cleanup_push(void (*)(void *), void *);
 extern int            ht_cleanup_pop(int);
 
-    /* process forking functions */
-extern int            ht_atfork_push(void (*)(void *), void (*)(void *), void (*)(void *), void *);
-extern int            ht_atfork_pop(void);
-extern pid_t          ht_fork(void);
-
     /* synchronization functions */
 extern int            ht_mutex_init(ht_mutex_t *);
 extern int            ht_mutex_acquire(ht_mutex_t *, int, ht_event_t);
@@ -476,7 +470,6 @@ extern int            ht_uctx_destroy(ht_uctx_t);
 extern Sfdisc_t      *ht_sfiodisc(void);
 
     /* generalized variants of replacement functions */
-extern int            ht_sigwait_ev(const sigset_t *, int *, ht_event_t);
 extern int            ht_connect_ev(int, const struct sockaddr *, socklen_t, ht_event_t);
 extern int            ht_accept_ev(int, struct sockaddr *, socklen_t *, ht_event_t);
 extern int            ht_select_ev(int, fd_set *, fd_set *, fd_set *, struct timeval *, ht_event_t);
@@ -494,10 +487,6 @@ extern ssize_t        ht_sendto_ev(int, const void *, size_t, int, const struct 
 extern int            ht_nanosleep(const struct timespec *, struct timespec *);
 extern int            ht_usleep(unsigned int);
 extern unsigned int   ht_sleep(unsigned int);
-extern pid_t          ht_waitpid(pid_t, int *, int);
-extern int            ht_system(const char *);
-extern int            ht_sigmask(int, const sigset_t *, sigset_t *);
-extern int            ht_sigwait(const sigset_t *, int *);
 extern int            ht_connect(int, const struct sockaddr *, socklen_t);
 extern int            ht_accept(int, struct sockaddr *, socklen_t *);
 extern int            ht_select(int, fd_set *, fd_set *, fd_set *, struct timeval *);

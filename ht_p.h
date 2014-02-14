@@ -94,6 +94,8 @@ struct ht_mctx_st {
 #define ht_mctx_switch(old,new) \
     _ht_mctx_switch_debug \
     swapcontext(&((old)->uc), &((new)->uc));
+extern int ht_mctx_set(ht_mctx_t *, void (*)(void), char *, char *);
+
 /* ht_clean.c */
 typedef struct ht_cleanup_st ht_cleanup_t;
 struct ht_cleanup_st {
@@ -174,6 +176,8 @@ extern ht_t ht_pqueue_tail(ht_pqueue_t *);
 extern ht_t ht_pqueue_walk(ht_pqueue_t *, ht_t, int);
 extern int ht_pqueue_contains(ht_pqueue_t *, ht_t);
 /* ht_util.c */
+#define ht_util_min(a,b) \
+           ((a) > (b) ? (b) : (a))
 extern char *ht_util_cpystrn(char *, const char *, size_t);
 extern int ht_util_fd_valid(int);
 extern void ht_util_fds_merge(int, fd_set *, fd_set *, fd_set *, fd_set *, fd_set *, fd_set *);
@@ -249,6 +253,21 @@ extern int ht_snprintf(char *, size_t, const char *, ...);
 extern char * ht_vasprintf(const char *, va_list);
 extern char * ht_asprintf(const char *, ...);
 /* ht_attr.c */
+enum {
+       HT_ATTR_GET,
+       HT_ATTR_SET
+};
+
+struct ht_attr_st {
+       ht_t         a_tid;
+       int          a_prio;
+       int          a_dispatches;
+       char         a_name[HT_TCB_NAMELEN];
+       int          a_joinable;
+       unsigned int a_cancelstate;
+       unsigned int a_stacksize;
+       char        *a_stackaddr;
+};
 extern int ht_attr_ctrl(int, ht_attr_t, int, va_list);
 /* ht_time.c */
 #define HT_TIME_NOW  (ht_time_t *)(0)
@@ -340,5 +359,21 @@ extern ht_ringnode_t *ht_ring_pop(ht_ring_t *);
 extern int ht_ring_favorite(ht_ring_t *, ht_ringnode_t *);
 extern ht_ringnode_t *ht_ring_dequeue(ht_ring_t *);
 extern int ht_ring_contains(ht_ring_t *, ht_ringnode_t *);
+/* ht_lib.c */
+#define ht_implicit_init() \
+       if (!ht_initialized) \
+        ht_init();
+extern int ht_initialized;
+extern int ht_thread_exists(ht_t);
+extern void ht_thread_cleanup(ht_t);
+/* ht_high.c */
+extern ssize_t ht_readv_faked(int, const struct iovec *, int);
+extern ssize_t ht_writev_iov_bytes(const struct iovec *, int);
+extern void ht_writev_iov_advance(const struct iovec *, int, size_t, struct iovec **, int *, struct iovec *, int);
+extern ssize_t ht_writev_faked(int, const struct iovec *, int);
+/* ht_data.c */
+extern void ht_key_destroydata(ht_t);
+/* ht_sync.c */
+extern void ht_mutex_releaseall(ht_t);
 
 #endif /* _HT_P_H_ */
