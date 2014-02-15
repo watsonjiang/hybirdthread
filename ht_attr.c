@@ -1,7 +1,8 @@
 #include "ht.h"
 #include "ht_p.h"
 
-ht_attr_t ht_attr_of(ht_t t)
+ht_attr_t 
+ht_attr_of(ht_t t)
 {
     ht_attr_t a;
 
@@ -13,7 +14,8 @@ ht_attr_t ht_attr_of(ht_t t)
     return a;
 }
 
-ht_attr_t ht_attr_new(void)
+ht_attr_t 
+ht_attr_new(void)
 {
     ht_attr_t a;
 
@@ -24,7 +26,8 @@ ht_attr_t ht_attr_new(void)
     return a;
 }
 
-int ht_attr_destroy(ht_attr_t a)
+int 
+ht_attr_destroy(ht_attr_t a)
 {
     if (a == NULL)
         return ht_error(FALSE, EINVAL);
@@ -32,7 +35,8 @@ int ht_attr_destroy(ht_attr_t a)
     return TRUE;
 }
 
-int ht_attr_init(ht_attr_t a)
+int 
+ht_attr_init(ht_attr_t a)
 {
     if (a == NULL)
         return ht_error(FALSE, EINVAL);
@@ -48,7 +52,8 @@ int ht_attr_init(ht_attr_t a)
     return TRUE;
 }
 
-int ht_attr_get(ht_attr_t a, int op, ...)
+int 
+ht_attr_get(ht_attr_t a, int op, ...)
 {
     va_list ap;
     int rc;
@@ -59,7 +64,8 @@ int ht_attr_get(ht_attr_t a, int op, ...)
     return rc;
 }
 
-int ht_attr_set(ht_attr_t a, int op, ...)
+int 
+ht_attr_set(ht_attr_t a, int op, ...)
 {
     va_list ap;
     int rc;
@@ -70,7 +76,8 @@ int ht_attr_set(ht_attr_t a, int op, ...)
     return rc;
 }
 
-int ht_attr_ctrl(int cmd, ht_attr_t a, int op, va_list ap)
+int 
+ht_attr_ctrl(int cmd, ht_attr_t a, int op, va_list ap)
 {
     if (a == NULL)
         return ht_error(FALSE, EINVAL);
