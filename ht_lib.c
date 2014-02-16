@@ -11,7 +11,8 @@ long ht_version(void)
 int ht_initialized = FALSE;
 
 /* initialize the package */
-int ht_init(void)
+int 
+ht_init(void)
 {
     ht_attr_t t_attr;
 
@@ -79,7 +80,8 @@ int ht_init(void)
 }
 
 /* kill the package internals */
-int ht_kill(void)
+int 
+ht_kill(void)
 {
     if (!ht_initialized)
         return ht_error(FALSE, EINVAL);
@@ -96,7 +98,8 @@ int ht_kill(void)
 }
 
 /* scheduler control/query */
-long ht_ctrl(unsigned long query, ...)
+long 
+ht_ctrl(unsigned long query, ...)
 {
     long rc;
     va_list ap;
@@ -146,7 +149,9 @@ long ht_ctrl(unsigned long query, ...)
 }
 
 /* create a new thread of execution by spawning a cooperative thread */
-static void ht_spawn_trampoline(void)
+static 
+void 
+ht_spawn_trampoline(void)
 {
     void *data;
 
@@ -159,7 +164,9 @@ static void ht_spawn_trampoline(void)
     /* NOTREACHED */
     abort();
 }
-ht_t ht_spawn(ht_attr_t attr, void *(*func)(void *), void *arg)
+
+ht_t 
+ht_spawn(ht_attr_t attr, void *(*func)(void *), void *arg)
 {
     ht_t t;
     unsigned int stacksize;
@@ -262,13 +269,15 @@ ht_t ht_spawn(ht_attr_t attr, void *(*func)(void *), void *arg)
 }
 
 /* returns the current thread */
-ht_t ht_self(void)
+ht_t 
+ht_self(void)
 {
     return ht_current;
 }
 
 /* check whether a thread exists */
-int ht_thread_exists(ht_t t)
+int 
+ht_thread_exists(ht_t t)
 {
     if (!ht_pqueue_contains(&ht_NQ, t))
         if (!ht_pqueue_contains(&ht_RQ, t))
@@ -280,7 +289,8 @@ int ht_thread_exists(ht_t t)
 }
 
 /* cleanup a particular thread */
-void ht_thread_cleanup(ht_t thread)
+void 
+ht_thread_cleanup(ht_t thread)
 {
     /* run the cleanup handlers */
     if (thread->cleanups != NULL)
@@ -297,7 +307,9 @@ void ht_thread_cleanup(ht_t thread)
 }
 
 /* terminate the current thread */
-static int ht_exit_cb(void *arg)
+static 
+int 
+ht_exit_cb(void *arg)
 {
     int rc;
 
@@ -323,7 +335,9 @@ static int ht_exit_cb(void *arg)
     else
         return FALSE;
 }
-void ht_exit(void *value)
+
+void 
+ht_exit(void *value)
 {
     ht_event_t ev;
 
@@ -369,7 +383,8 @@ void ht_exit(void *value)
 }
 
 /* waits for the termination of the specified thread */
-int ht_join(ht_t tid, void **value)
+int 
+ht_join(ht_t tid, void **value)
 {
     ht_event_t ev;
     static ht_key_t ev_key = HT_KEY_INIT;
@@ -399,7 +414,8 @@ int ht_join(ht_t tid, void **value)
 }
 
 /* delegates control back to scheduler for context switches */
-int ht_yield(ht_t to)
+int 
+ht_yield(ht_t to)
 {
     ht_pqueue_t *q = NULL;
 
@@ -434,7 +450,8 @@ int ht_yield(ht_t to)
 }
 
 /* suspend a thread until its again manually resumed */
-int ht_suspend(ht_t t)
+int 
+ht_suspend(ht_t t)
 {
     ht_pqueue_t *q;
 
@@ -459,7 +476,8 @@ int ht_suspend(ht_t t)
 }
 
 /* resume a previously suspended thread */
-int ht_resume(ht_t t)
+int 
+ht_resume(ht_t t)
 {
     ht_pqueue_t *q;
 
@@ -482,7 +500,8 @@ int ht_resume(ht_t t)
 }
 
 /* switch a filedescriptor's I/O mode */
-int ht_fdmode(int fd, int newmode)
+int 
+ht_fdmode(int fd, int newmode)
 {
     int fdmode;
     int oldmode;
@@ -506,7 +525,8 @@ int ht_fdmode(int fd, int newmode)
 }
 
 /* wait for specific amount of time */
-int ht_nap(ht_time_t naptime)
+int 
+ht_nap(ht_time_t naptime)
 {
     ht_time_t until;
     ht_event_t ev;
@@ -522,7 +542,8 @@ int ht_nap(ht_time_t naptime)
 }
 
 /* runs a constructor once */
-int ht_once(ht_once_t *oncectrl, void (*constructor)(void *), void *arg)
+int 
+ht_once(ht_once_t *oncectrl, void (*constructor)(void *), void *arg)
 {
     if (oncectrl == NULL || constructor == NULL)
         return ht_error(FALSE, EINVAL);

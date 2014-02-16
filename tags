@@ -1,0 +1,640 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+BEGIN_DECLARATION	ht.h	56;"	d
+BEGIN_DECLARATION	ht.h	59;"	d
+BINS	Makefile	/^BINS=libht.so$/;"	m
+CC	Makefile	/^CC=gcc $/;"	m
+CFLAGS	Makefile	/^CFLAGS=  -g \\$/;"	m
+COMPILER_HAPPYNESS	ht_p.h	54;"	d
+COND	ht_p.h	/^        struct { ht_cond_t *cond; }                                 COND;$/;"	m	union:ht_event_st::__anon7	typeref:struct:ht_event_st::__anon7::__anon13
+DP_C_LDOUBLE	ht_string.c	63;"	d	file:
+DP_C_LLONG	ht_string.c	64;"	d	file:
+DP_C_LONG	ht_string.c	62;"	d	file:
+DP_C_SHORT	ht_string.c	61;"	d	file:
+DP_F_MINUS	ht_string.c	52;"	d	file:
+DP_F_NUM	ht_string.c	55;"	d	file:
+DP_F_PLUS	ht_string.c	53;"	d	file:
+DP_F_SPACE	ht_string.c	54;"	d	file:
+DP_F_UNSIGNED	ht_string.c	58;"	d	file:
+DP_F_UP	ht_string.c	57;"	d	file:
+DP_F_ZERO	ht_string.c	56;"	d	file:
+DP_S_CONV	ht_string.c	48;"	d	file:
+DP_S_DEFAULT	ht_string.c	42;"	d	file:
+DP_S_DONE	ht_string.c	49;"	d	file:
+DP_S_DOT	ht_string.c	45;"	d	file:
+DP_S_FLAGS	ht_string.c	43;"	d	file:
+DP_S_MAX	ht_string.c	46;"	d	file:
+DP_S_MIN	ht_string.c	44;"	d	file:
+DP_S_MOD	ht_string.c	47;"	d	file:
+END_DECLARATION	ht.h	57;"	d
+END_DECLARATION	ht.h	60;"	d
+FALSE	ht.h	39;"	d
+FD	ht_p.h	/^        struct { int fd; }                                          FD;$/;"	m	union:ht_event_st::__anon7	typeref:struct:ht_event_st::__anon7::__anon8
+FD_SETSIZE	ht_p.h	50;"	d
+FUNC	ht_p.h	/^        struct { ht_event_func_t func; void *arg; ht_time_t tv; }   FUNC;$/;"	m	union:ht_event_st::__anon7	typeref:struct:ht_event_st::__anon7::__anon15
+HT_ATFORK_MAX	ht.h	74;"	d
+HT_ATTR_BOUND	ht.h	/^    HT_ATTR_BOUND           \/* RO [int]               whether object is bound to thread *\/$/;"	e	enum:__anon1
+HT_ATTR_CANCEL_STATE	ht.h	/^    HT_ATTR_CANCEL_STATE,   \/* RW [unsigned int]      thread cancellation state         *\/$/;"	e	enum:__anon1
+HT_ATTR_DEFAULT	ht.h	147;"	d
+HT_ATTR_DISPATCHES	ht.h	/^    HT_ATTR_DISPATCHES,     \/* RO [int]               total number of thread dispatches *\/$/;"	e	enum:__anon1
+HT_ATTR_EVENTS	ht.h	/^    HT_ATTR_EVENTS,         \/* RO [ht_event_t]       events the thread is waiting for  *\/$/;"	e	enum:__anon1
+HT_ATTR_GET	ht_p.h	/^       HT_ATTR_GET,$/;"	e	enum:__anon6
+HT_ATTR_JOINABLE	ht.h	/^    HT_ATTR_JOINABLE,       \/* RW [int]               thread detachment type            *\/$/;"	e	enum:__anon1
+HT_ATTR_NAME	ht.h	/^    HT_ATTR_NAME,           \/* RW [char *]            name of thread                    *\/$/;"	e	enum:__anon1
+HT_ATTR_PRIO	ht.h	/^    HT_ATTR_PRIO,           \/* RW [int]               priority of thread                *\/$/;"	e	enum:__anon1
+HT_ATTR_SET	ht_p.h	/^       HT_ATTR_SET$/;"	e	enum:__anon6
+HT_ATTR_STACK_ADDR	ht.h	/^    HT_ATTR_STACK_ADDR,     \/* RW [char *]            stack lower address               *\/$/;"	e	enum:__anon1
+HT_ATTR_STACK_SIZE	ht.h	/^    HT_ATTR_STACK_SIZE,     \/* RW [unsigned int]      stack size                        *\/$/;"	e	enum:__anon1
+HT_ATTR_START_ARG	ht.h	/^    HT_ATTR_START_ARG,      \/* RO [void *]            thread start argument             *\/$/;"	e	enum:__anon1
+HT_ATTR_START_FUNC	ht.h	/^    HT_ATTR_START_FUNC,     \/* RO [void *(*)(void *)] thread start function             *\/$/;"	e	enum:__anon1
+HT_ATTR_STATE	ht.h	/^    HT_ATTR_STATE,          \/* RO [ht_state_t]       scheduling state                  *\/$/;"	e	enum:__anon1
+HT_ATTR_TIME_LAST	ht.h	/^    HT_ATTR_TIME_LAST,      \/* RO [ht_time_t]        time thread was last dispatched   *\/$/;"	e	enum:__anon1
+HT_ATTR_TIME_RAN	ht.h	/^    HT_ATTR_TIME_RAN,       \/* RO [ht_time_t]        time thread was running           *\/$/;"	e	enum:__anon1
+HT_ATTR_TIME_SPAWN	ht.h	/^    HT_ATTR_TIME_SPAWN,     \/* RO [ht_time_t]        time thread was spawned           *\/$/;"	e	enum:__anon1
+HT_BARRIER_HEADLIGHT	ht.h	244;"	d
+HT_BARRIER_INIT	ht.h	241;"	d
+HT_BARRIER_INITIALIZED	ht.h	240;"	d
+HT_BARRIER_TAILLIGHT	ht.h	245;"	d
+HT_CANCELED	ht.h	219;"	d
+HT_CANCEL_ASYNCHRONOUS	ht.h	216;"	d
+HT_CANCEL_DEFAULT	ht.h	218;"	d
+HT_CANCEL_DEFERRED	ht.h	217;"	d
+HT_CANCEL_DISABLE	ht.h	215;"	d
+HT_CANCEL_ENABLE	ht.h	214;"	d
+HT_COND_BROADCAST	ht.h	235;"	d
+HT_COND_HANDLED	ht.h	236;"	d
+HT_COND_INIT	ht.h	237;"	d
+HT_COND_INITIALIZED	ht.h	233;"	d
+HT_COND_SIGNALED	ht.h	234;"	d
+HT_CTRL_DUMPSTATE	ht.h	99;"	d
+HT_CTRL_FAVOURNEW	ht.h	100;"	d
+HT_CTRL_GETAVLOAD	ht.h	84;"	d
+HT_CTRL_GETNAME	ht.h	86;"	d
+HT_CTRL_GETPRIO	ht.h	85;"	d
+HT_CTRL_GETTHREADS	ht.h	93;"	d
+HT_CTRL_GETTHREADS_DEAD	ht.h	92;"	d
+HT_CTRL_GETTHREADS_NEW	ht.h	87;"	d
+HT_CTRL_GETTHREADS_READY	ht.h	88;"	d
+HT_CTRL_GETTHREADS_RUNNING	ht.h	89;"	d
+HT_CTRL_GETTHREADS_SUSPENDED	ht.h	91;"	d
+HT_CTRL_GETTHREADS_WAITING	ht.h	90;"	d
+HT_DESTRUCTOR_ITERATIONS	ht.h	75;"	d
+HT_EVENT_COND	ht.h	159;"	d
+HT_EVENT_FD	ht.h	154;"	d
+HT_EVENT_FUNC	ht.h	161;"	d
+HT_EVENT_MSG	ht.h	157;"	d
+HT_EVENT_MUTEX	ht.h	158;"	d
+HT_EVENT_SELECT	ht.h	155;"	d
+HT_EVENT_TID	ht.h	160;"	d
+HT_EVENT_TIME	ht.h	156;"	d
+HT_FAKE_POLL	ht.h	311;"	d
+HT_FAKE_RWV	ht.h	363;"	d
+HT_FDMODE_BLOCK	ht.h	/^    HT_FDMODE_BLOCK,$/;"	e	enum:__anon5
+HT_FDMODE_ERROR	ht.h	/^    HT_FDMODE_ERROR = -1,$/;"	e	enum:__anon5
+HT_FDMODE_NONBLOCK	ht.h	/^    HT_FDMODE_NONBLOCK$/;"	e	enum:__anon5
+HT_FDMODE_POLL	ht.h	/^    HT_FDMODE_POLL  =  0,$/;"	e	enum:__anon5
+HT_FREE_ALL	ht.h	/^enum { HT_FREE_THIS, HT_FREE_ALL };$/;"	e	enum:__anon2
+HT_FREE_THIS	ht.h	/^enum { HT_FREE_THIS, HT_FREE_ALL };$/;"	e	enum:__anon2
+HT_H	ht_sw.h	2;"	d
+HT_KEY_INIT	ht.h	194;"	d
+HT_KEY_MAX	ht.h	73;"	d
+HT_MODE_CHAIN	ht.h	175;"	d
+HT_MODE_REUSE	ht.h	174;"	d
+HT_MODE_STATIC	ht.h	176;"	d
+HT_MUTEX_INIT	ht.h	224;"	d
+HT_MUTEX_INITIALIZED	ht.h	222;"	d
+HT_MUTEX_LOCKED	ht.h	223;"	d
+HT_ONCE_INIT	ht.h	198;"	d
+HT_PRIO_MAX	ht.h	119;"	d
+HT_PRIO_MIN	ht.h	121;"	d
+HT_PRIO_STD	ht.h	120;"	d
+HT_RING_INIT	ht.h	211;"	d
+HT_RWLOCK_INIT	ht.h	229;"	d
+HT_RWLOCK_INITIALIZED	ht.h	228;"	d
+HT_RWLOCK_RD	ht.h	/^enum { HT_RWLOCK_RD, HT_RWLOCK_RW };$/;"	e	enum:__anon4
+HT_RWLOCK_RW	ht.h	/^enum { HT_RWLOCK_RD, HT_RWLOCK_RW };$/;"	e	enum:__anon4
+HT_STATE_DEAD	ht.h	/^    HT_STATE_DEAD                   \/* terminated, waiting to be joined        *\/$/;"	e	enum:ht_state_en
+HT_STATE_NEW	ht.h	/^    HT_STATE_NEW,                   \/* spawned, but still not dispatched       *\/$/;"	e	enum:ht_state_en
+HT_STATE_READY	ht.h	/^    HT_STATE_READY,                 \/* ready, waiting to be dispatched         *\/$/;"	e	enum:ht_state_en
+HT_STATE_SCHEDULER	ht.h	/^    HT_STATE_SCHEDULER = 0,         \/* the special scheduler thread only       *\/$/;"	e	enum:ht_state_en
+HT_STATE_WAITING	ht.h	/^    HT_STATE_WAITING,               \/* suspended, waiting until event occurred *\/$/;"	e	enum:ht_state_en
+HT_STATUS_FAILED	ht.h	/^    HT_STATUS_FAILED$/;"	e	enum:__anon3
+HT_STATUS_OCCURRED	ht.h	/^    HT_STATUS_OCCURRED,$/;"	e	enum:__anon3
+HT_STATUS_PENDING	ht.h	/^    HT_STATUS_PENDING,$/;"	e	enum:__anon3
+HT_SYSCALL_HARD	ht.h	78;"	d
+HT_SYSCALL_SOFT	ht.h	80;"	d
+HT_TCB_NAMELEN	ht_p.h	108;"	d
+HT_TIME	ht_p.h	275;"	d
+HT_TIME_NOW	ht_p.h	273;"	d
+HT_TIME_ZERO	ht_p.h	274;"	d
+HT_UNTIL_FD_EXCEPTION	ht.h	167;"	d
+HT_UNTIL_FD_READABLE	ht.h	165;"	d
+HT_UNTIL_FD_WRITEABLE	ht.h	166;"	d
+HT_UNTIL_OCCURRED	ht.h	164;"	d
+HT_UNTIL_TID_DEAD	ht.h	171;"	d
+HT_UNTIL_TID_NEW	ht.h	168;"	d
+HT_UNTIL_TID_READY	ht.h	169;"	d
+HT_UNTIL_TID_WAITING	ht.h	170;"	d
+HT_VERSION	ht.h	12;"	d
+HT_VERSION_HEX	ht.h	9;"	d
+HT_VERSION_STR	ht.h	6;"	d
+HT_WALK_NEXT	ht.h	182;"	d
+HT_WALK_PREV	ht.h	183;"	d
+INFTIM	ht.h	336;"	d
+INFTIM	ht.h	351;"	d
+LDFLAGS	Makefile	/^LDFLAGS=-g \\$/;"	m
+LDOUBLE	ht_string.c	31;"	d	file:
+LDOUBLE	ht_string.c	33;"	d	file:
+LLONG	ht_string.c	25;"	d	file:
+LLONG	ht_string.c	27;"	d	file:
+MAX	ht_string.c	68;"	d	file:
+MSG	ht_p.h	/^        struct { ht_msgport_t mp; }                                 MSG;$/;"	m	union:ht_event_st::__anon7	typeref:struct:ht_event_st::__anon7::__anon11
+MUTEX	ht_p.h	/^        struct { ht_mutex_t *mutex; }                               MUTEX;$/;"	m	union:ht_event_st::__anon7	typeref:struct:ht_event_st::__anon7::__anon12
+NUL	ht.h	45;"	d
+NUL	ht_string.c	69;"	d	file:
+NULL	ht.h	48;"	d
+OBJS	Makefile	/^OBJS=ht_errno.o ht_string.o ht_debug.o ht_util.o ht_attr.o ht_time.o ht_pqueue.o \\$/;"	m
+O_NONBLOCKING	ht_p.h	35;"	d
+O_NONBLOCKING	ht_p.h	38;"	d
+O_NONBLOCKING	ht_p.h	41;"	d
+POLLERR	ht.h	343;"	d
+POLLHUP	ht.h	344;"	d
+POLLIN	ht.h	340;"	d
+POLLNVAL	ht.h	345;"	d
+POLLOUT	ht.h	342;"	d
+POLLPRI	ht.h	341;"	d
+POLLRDBAND	ht.h	327;"	d
+POLLRDBAND	ht.h	347;"	d
+POLLRDNORM	ht.h	324;"	d
+POLLRDNORM	ht.h	346;"	d
+POLLWRBAND	ht.h	333;"	d
+POLLWRBAND	ht.h	349;"	d
+POLLWRNORM	ht.h	330;"	d
+POLLWRNORM	ht.h	348;"	d
+SELECT	ht_p.h	/^        struct { int *n; int nfd; fd_set *rfds, *wfds, *efds; }     SELECT;$/;"	m	union:ht_event_st::__anon7	typeref:struct:ht_event_st::__anon7::__anon9
+SIGSTKSZ	ht_tcb.c	7;"	d	file:
+SWITCH_DEBUG_LINE	ht_p.h	87;"	d
+Sfdisc_t	ht.h	/^typedef void *Sfdisc_t;$/;"	t
+TEST_BINS	Makefile	/^TEST_BINS=queue_test ht_test$/;"	m
+TID	ht_p.h	/^        struct { ht_t tid; }                                        TID;$/;"	m	union:ht_event_st::__anon7	typeref:struct:ht_event_st::__anon7::__anon14
+TIME	ht_p.h	/^        struct { ht_time_t tv; }                                    TIME;$/;"	m	union:ht_event_st::__anon7	typeref:struct:ht_event_st::__anon7::__anon10
+TRUE	ht.h	42;"	d
+UIO_MAXIOV	ht.h	368;"	d
+UIO_MAXIOV	ht.h	377;"	d
+_BIT	ht.h	52;"	d
+_HT_H_	ht.h	2;"	d
+_HT_P_H_	ht_p.h	6;"	d
+_XOPEN_SOURCE	ht.h	315;"	d
+_XOPEN_SOURCE	ht.h	321;"	d
+_XOPEN_SOURCE_set	ht.h	316;"	d
+_XOPEN_SOURCE_set	ht.h	320;"	d
+__QUEUE_H	queue.h	2;"	d
+_ht_add_task_ref	ht_sw.c	/^void _ht_add_task_ref(_ht_task_t* task)$/;"	f
+_ht_async_worker	ht_sw.c	/^static void* _ht_async_worker(void * not_used)$/;"	f	file:
+_ht_create_task	ht_sw.c	/^_ht_task_t * _ht_create_task()$/;"	f
+_ht_mctx_switch_debug	ht_p.h	90;"	d
+_ht_mctx_switch_debug	ht_p.h	92;"	d
+_ht_rm_task_ref	ht_sw.c	/^void _ht_rm_task_ref(_ht_task_t* task)$/;"	f
+_ht_task_status_check_func	ht_sw.c	/^static int _ht_task_status_check_func(void * argv)$/;"	f	file:
+_ht_task_t	ht_sw.c	/^struct _ht_task_t$/;"	s	file:
+_ht_worker_ctx_key	ht_sw.c	/^pthread_key_t _ht_worker_ctx_key;$/;"	v
+_ht_worker_ctx_t	ht_sw.c	/^struct _ht_worker_ctx_t$/;"	s	file:
+a_cancelstate	ht_p.h	/^       unsigned int a_cancelstate;$/;"	m	struct:ht_attr_st
+a_dispatches	ht_p.h	/^       int          a_dispatches;$/;"	m	struct:ht_attr_st
+a_joinable	ht_p.h	/^       int          a_joinable;$/;"	m	struct:ht_attr_st
+a_name	ht_p.h	/^       char         a_name[HT_TCB_NAMELEN];$/;"	m	struct:ht_attr_st
+a_prio	ht_p.h	/^       int          a_prio;$/;"	m	struct:ht_attr_st
+a_stackaddr	ht_p.h	/^       char        *a_stackaddr;$/;"	m	struct:ht_attr_st
+a_stacksize	ht_p.h	/^       unsigned int a_stacksize;$/;"	m	struct:ht_attr_st
+a_tid	ht_p.h	/^       ht_t         a_tid;$/;"	m	struct:ht_attr_st
+accept	ht.h	522;"	d
+arg	ht_p.h	/^        struct { ht_event_func_t func; void *arg; ht_time_t tv; }   FUNC;$/;"	m	struct:ht_event_st::__anon7::__anon15
+arg	ht_p.h	/^    void *arg;$/;"	m	struct:ht_cleanup_st
+br_cond	ht.h	/^    ht_cond_t    br_cond;$/;"	m	struct:ht_barrier_st
+br_count	ht.h	/^    int           br_count;$/;"	m	struct:ht_barrier_st
+br_cycle	ht.h	/^    int           br_cycle;$/;"	m	struct:ht_barrier_st
+br_mutex	ht.h	/^    ht_mutex_t   br_mutex;$/;"	m	struct:ht_barrier_st
+br_state	ht.h	/^    unsigned long br_state;$/;"	m	struct:ht_barrier_st
+br_threshold	ht.h	/^    int           br_threshold;$/;"	m	struct:ht_barrier_st
+caller	ht_sw.c	/^   pth_t             caller;$/;"	m	struct:_ht_task_t	file:
+cancelreq	ht_p.h	/^   int            cancelreq;            \/* cancellation request is pending             *\/$/;"	m	struct:ht_st
+cancelstate	ht_p.h	/^   unsigned int   cancelstate;          \/* cancellation state of thread                *\/$/;"	m	struct:ht_st
+char_to_int	ht_string.c	67;"	d	file:
+cleanups	ht_p.h	/^   ht_cleanup_t   *cleanups;             \/* stack of thread cleanup handlers            *\/$/;"	m	struct:ht_st
+cn_state	ht.h	/^    unsigned long cn_state;$/;"	m	struct:ht_cond_st
+cn_waiters	ht.h	/^    unsigned int  cn_waiters;$/;"	m	struct:ht_cond_st
+cond	ht_p.h	/^        struct { ht_cond_t *cond; }                                 COND;$/;"	m	struct:ht_event_st::__anon7::__anon13
+cond_not_empty	queue.c	/^   pthread_cond_t  cond_not_empty;$/;"	m	struct:queue_t	file:
+connect	ht.h	521;"	d
+curr_task	ht_sw.c	/^   _ht_task_t*          curr_task;$/;"	m	struct:_ht_worker_ctx_t	file:
+data	queue.c	/^   void * data;$/;"	m	struct:node_t	file:
+data_count	ht_p.h	/^   int            data_count;           \/* number of stored values                     *\/$/;"	m	struct:ht_st
+data_value	ht_p.h	/^   const void     **data_value;           \/* thread specific  values                     *\/$/;"	m	struct:ht_st
+destructor	ht_data.c	/^    void (*destructor)(void *);$/;"	m	struct:ht_keytab_st	file:
+dispatches	ht_p.h	/^   int            dispatches;           \/* total number of thread dispatches           *\/$/;"	m	struct:ht_st
+dopr	ht_string.c	/^dopr($/;"	f	file:
+dopr_outch	ht_string.c	/^dopr_outch($/;"	f	file:
+efds	ht_p.h	/^        struct { int *n; int nfd; fd_set *rfds, *wfds, *efds; }     SELECT;$/;"	m	struct:ht_event_st::__anon7::__anon9
+error	ht_p.h	/^    int error;$/;"	m	struct:ht_mctx_st
+ev_args	ht_p.h	/^    } ev_args;$/;"	m	struct:ht_event_st	typeref:union:ht_event_st::__anon7
+ev_goal	ht_p.h	/^    int ev_goal;$/;"	m	struct:ht_event_st
+ev_next	ht_p.h	/^    struct ht_event_st *ev_next;$/;"	m	struct:ht_event_st	typeref:struct:ht_event_st::ht_event_st
+ev_prev	ht_p.h	/^    struct ht_event_st *ev_prev;$/;"	m	struct:ht_event_st	typeref:struct:ht_event_st::ht_event_st
+ev_status	ht_p.h	/^    ht_status_t ev_status;$/;"	m	struct:ht_event_st
+ev_type	ht_p.h	/^    int ev_type;$/;"	m	struct:ht_event_st
+events	ht.h	/^    short events;               \/* events we are interested in   *\/$/;"	m	struct:pollfd
+events	ht_p.h	/^   ht_event_t     events;               \/* events the tread is waiting for             *\/$/;"	m	struct:ht_st
+f1	ht_test.c	/^void* f1(void *)$/;"	f
+f2	ht_test.c	/^void* f2(void *)$/;"	f
+f3	ht_test.c	/^void * f3(void*)$/;"	f
+fd	ht.h	/^    int fd;                     \/* which file descriptor to poll *\/$/;"	m	struct:pollfd
+fd	ht_p.h	/^        struct { int fd; }                                          FD;$/;"	m	struct:ht_event_st::__anon7::__anon8
+finished	ht_sw.c	/^   bool              finished;$/;"	m	struct:_ht_task_t	file:
+fmtfp	ht_string.c	/^fmtfp($/;"	f	file:
+fmtint	ht_string.c	/^fmtint($/;"	f	file:
+fmtstr	ht_string.c	/^fmtstr($/;"	f	file:
+fork	ht.h	510;"	d
+front	queue.c	/^   struct node_t * front;$/;"	m	struct:queue_t	typeref:struct:queue_t::node_t	file:
+func	ht_p.h	/^        struct { ht_event_func_t func; void *arg; ht_time_t tv; }   FUNC;$/;"	m	struct:ht_event_st::__anon7::__anon15
+func	ht_p.h	/^    void (*func)(void *);$/;"	m	struct:ht_cleanup_st
+ht_DQ	ht_sched.c	/^ht_pqueue_t ht_DQ;         \/* queue of terminated threads           *\/$/;"	v
+ht_NQ	ht_sched.c	/^ht_pqueue_t ht_NQ;         \/* queue of new threads                  *\/$/;"	v
+ht_RQ	ht_sched.c	/^ht_pqueue_t ht_RQ;         \/* queue of threads ready to run         *\/$/;"	v
+ht_SQ	ht_sched.c	/^ht_pqueue_t ht_SQ;         \/* queue of suspended threads            *\/$/;"	v
+ht_WQ	ht_sched.c	/^ht_pqueue_t ht_WQ;         \/* queue of threads waiting for an event *\/$/;"	v
+ht_abort	ht_cancel.c	/^int ht_abort(ht_t thread)$/;"	f
+ht_accept	ht_high.c	/^int ht_accept(int s, struct sockaddr *addr, socklen_t *addrlen)$/;"	f
+ht_accept_ev	ht_high.c	/^int ht_accept_ev(int s, struct sockaddr *addr, socklen_t *addrlen, ht_event_t ev_extra)$/;"	f
+ht_asprintf	ht_string.c	/^ht_asprintf($/;"	f
+ht_attr_ctrl	ht_attr.c	/^int ht_attr_ctrl(int cmd, ht_attr_t a, int op, va_list ap)$/;"	f
+ht_attr_destroy	ht_attr.c	/^int ht_attr_destroy(ht_attr_t a)$/;"	f
+ht_attr_get	ht_attr.c	/^int ht_attr_get(ht_attr_t a, int op, ...)$/;"	f
+ht_attr_init	ht_attr.c	/^int ht_attr_init(ht_attr_t a)$/;"	f
+ht_attr_new	ht_attr.c	/^ht_attr_t ht_attr_new(void)$/;"	f
+ht_attr_of	ht_attr.c	/^ht_attr_t ht_attr_of(ht_t t)$/;"	f
+ht_attr_set	ht_attr.c	/^int ht_attr_set(ht_attr_t a, int op, ...)$/;"	f
+ht_attr_st	ht_p.h	/^struct ht_attr_st {$/;"	s
+ht_attr_t	ht.h	/^typedef struct ht_attr_st *ht_attr_t;$/;"	t	typeref:struct:ht_attr_st
+ht_barrier_init	ht_sync.c	/^int ht_barrier_init(ht_barrier_t *barrier, int threshold)$/;"	f
+ht_barrier_reach	ht_sync.c	/^int ht_barrier_reach(ht_barrier_t *barrier)$/;"	f
+ht_barrier_st	ht.h	/^struct ht_barrier_st { \/* not hidden to avoid destructor *\/$/;"	s
+ht_barrier_t	ht.h	/^typedef struct ht_barrier_st ht_barrier_t;$/;"	t	typeref:struct:ht_barrier_st
+ht_bg_exec_begin	ht_sw.c	/^int ht_bg_exec_begin()$/;"	f
+ht_bg_exec_end	ht_sw.c	/^int ht_bg_exec_end()$/;"	f
+ht_cancel	ht_cancel.c	/^int ht_cancel(ht_t thread)$/;"	f
+ht_cancel_point	ht_cancel.c	/^void ht_cancel_point(void)$/;"	f
+ht_cancel_state	ht_cancel.c	/^void ht_cancel_state(int newstate, int *oldstate)$/;"	f
+ht_cleanup_pop	ht_clean.c	/^int ht_cleanup_pop(int execute)$/;"	f
+ht_cleanup_popall	ht_clean.c	/^void ht_cleanup_popall(ht_t t, int execute)$/;"	f
+ht_cleanup_push	ht_clean.c	/^int ht_cleanup_push(void (*func)(void *), void *arg)$/;"	f
+ht_cleanup_st	ht_p.h	/^struct ht_cleanup_st {$/;"	s
+ht_cleanup_t	ht_p.h	/^typedef struct ht_cleanup_st ht_cleanup_t;$/;"	t	typeref:struct:ht_cleanup_st
+ht_cond_await	ht_sync.c	/^int ht_cond_await(ht_cond_t *cond, ht_mutex_t *mutex, ht_event_t ev_extra)$/;"	f
+ht_cond_cleanup_handler	ht_sync.c	/^static void ht_cond_cleanup_handler(void *_cleanvec)$/;"	f	file:
+ht_cond_init	ht_sync.c	/^int ht_cond_init(ht_cond_t *cond)$/;"	f
+ht_cond_notify	ht_sync.c	/^int ht_cond_notify(ht_cond_t *cond, int broadcast)$/;"	f
+ht_cond_st	ht.h	/^struct ht_cond_st { \/* not hidden to avoid destructor *\/$/;"	s
+ht_cond_t	ht.h	/^typedef struct ht_cond_st ht_cond_t;$/;"	t	typeref:struct:ht_cond_st
+ht_connect	ht_high.c	/^int ht_connect(int s, const struct sockaddr *addr, socklen_t addrlen)$/;"	f
+ht_connect_ev	ht_high.c	/^int ht_connect_ev(int s, const struct sockaddr *addr, socklen_t addrlen, ht_event_t ev_extra)$/;"	f
+ht_ctrl	ht_lib.c	/^long ht_ctrl(unsigned long query, ...)$/;"	f
+ht_current	ht_sched.c	/^ht_t        ht_current;    \/* the currently running thread          *\/$/;"	v
+ht_debug	ht_debug.c	/^void ht_debug(const char *file, int line, int argc, const char *fmt, ...)$/;"	f
+ht_debug1	ht_p.h	207;"	d
+ht_debug1	ht_p.h	216;"	d
+ht_debug2	ht_p.h	208;"	d
+ht_debug2	ht_p.h	217;"	d
+ht_debug3	ht_p.h	209;"	d
+ht_debug3	ht_p.h	218;"	d
+ht_debug4	ht_p.h	210;"	d
+ht_debug4	ht_p.h	219;"	d
+ht_debug5	ht_p.h	211;"	d
+ht_debug5	ht_p.h	220;"	d
+ht_debug6	ht_p.h	212;"	d
+ht_debug6	ht_p.h	221;"	d
+ht_dumpqueue	ht_debug.c	/^void ht_dumpqueue(FILE *fp, const char *qn, ht_pqueue_t *q)$/;"	f
+ht_dumpstate	ht_debug.c	/^void ht_dumpstate(FILE *fp)$/;"	f
+ht_error	ht_p.h	239;"	d
+ht_error	ht_p.h	245;"	d
+ht_event	ht_event.c	/^ht_event_t ht_event(unsigned long spec, ...)$/;"	f
+ht_event_concat	ht_event.c	/^ht_event_t ht_event_concat(ht_event_t evf, ...)$/;"	f
+ht_event_destructor	ht_event.c	/^static void ht_event_destructor(void *vp)$/;"	f	file:
+ht_event_extract	ht_event.c	/^int ht_event_extract(ht_event_t ev, ...)$/;"	f
+ht_event_free	ht_event.c	/^int ht_event_free(ht_event_t ev, int mode)$/;"	f
+ht_event_func_t	ht_p.h	/^typedef int (*ht_event_func_t)(void *);$/;"	t
+ht_event_isolate	ht_event.c	/^ht_event_t ht_event_isolate(ht_event_t ev)$/;"	f
+ht_event_occurred	ht.h	536;"	d
+ht_event_st	ht_p.h	/^struct ht_event_st {$/;"	s
+ht_event_status	ht_event.c	/^ht_status_t ht_event_status(ht_event_t ev)$/;"	f
+ht_event_t	ht.h	/^typedef struct ht_event_st *ht_event_t;$/;"	t	typeref:struct:ht_event_st
+ht_event_typeof	ht_event.c	/^unsigned long ht_event_typeof(ht_event_t ev)$/;"	f
+ht_event_walk	ht_event.c	/^ht_event_t ht_event_walk(ht_event_t ev, unsigned int direction)$/;"	f
+ht_exit	ht_lib.c	/^void ht_exit(void *value)$/;"	f
+ht_exit_cb	ht_lib.c	/^static int ht_exit_cb(void *arg)$/;"	f	file:
+ht_favournew	ht_sched.c	/^int          ht_favournew;  \/* favour new threads on startup         *\/$/;"	v
+ht_fdmode	ht_lib.c	/^int ht_fdmode(int fd, int newmode)$/;"	f
+ht_implicit_init	ht_p.h	363;"	d
+ht_init	ht_lib.c	/^int ht_init(void)$/;"	f
+ht_init	ht_sw.c	/^int ht_init(int num_worker)$/;"	f
+ht_initialized	ht_lib.c	/^int ht_initialized = FALSE;$/;"	v
+ht_join	ht_lib.c	/^int ht_join(ht_t tid, void **value)$/;"	f
+ht_key_create	ht_data.c	/^int ht_key_create(ht_key_t *key, void (*func)(void *))$/;"	f
+ht_key_delete	ht_data.c	/^int ht_key_delete(ht_key_t key)$/;"	f
+ht_key_destroydata	ht_data.c	/^void ht_key_destroydata(ht_t t)$/;"	f
+ht_key_getdata	ht_data.c	/^void *ht_key_getdata(ht_key_t key)$/;"	f
+ht_key_setdata	ht_data.c	/^int ht_key_setdata(ht_key_t key, const void *value)$/;"	f
+ht_key_t	ht.h	/^typedef int ht_key_t;$/;"	t
+ht_keytab	ht_data.c	/^static struct ht_keytab_st ht_keytab[HT_KEY_MAX];$/;"	v	typeref:struct:ht_keytab_st	file:
+ht_keytab_st	ht_data.c	/^struct ht_keytab_st {$/;"	s	file:
+ht_kill	ht_lib.c	/^int ht_kill(void)$/;"	f
+ht_loadtickgap	ht_sched.c	/^static ht_time_t   ht_loadtickgap = HT_TIME(1,0);$/;"	v	file:
+ht_loadticknext	ht_sched.c	/^static ht_time_t   ht_loadticknext;$/;"	v	file:
+ht_loadval	ht_sched.c	/^float        ht_loadval;    \/* average scheduler load value          *\/$/;"	v
+ht_main	ht_sched.c	/^ht_t        ht_main;       \/* the main thread                       *\/$/;"	v
+ht_mctx_restore	ht_p.h	80;"	d
+ht_mctx_save	ht_p.h	71;"	d
+ht_mctx_set	ht_mctx.c	/^int ht_mctx_set($/;"	f
+ht_mctx_st	ht_p.h	/^struct ht_mctx_st {$/;"	s
+ht_mctx_switch	ht_p.h	94;"	d
+ht_mctx_t	ht_p.h	/^typedef struct ht_mctx_st ht_mctx_t;$/;"	t	typeref:struct:ht_mctx_st
+ht_message_st	ht.h	/^struct ht_message_st { \/* not hidden to allow inclusion *\/$/;"	s
+ht_message_t	ht.h	/^typedef struct ht_message_st ht_message_t;$/;"	t	typeref:struct:ht_message_st
+ht_msgport	ht_msg.c	/^static ht_ring_t ht_msgport = HT_RING_INIT;$/;"	v	file:
+ht_msgport_create	ht_msg.c	/^ht_msgport_t ht_msgport_create(const char *name)$/;"	f
+ht_msgport_destroy	ht_msg.c	/^void ht_msgport_destroy(ht_msgport_t mp)$/;"	f
+ht_msgport_find	ht_msg.c	/^ht_msgport_t ht_msgport_find(const char *name)$/;"	f
+ht_msgport_get	ht_msg.c	/^ht_message_t *ht_msgport_get(ht_msgport_t mp)$/;"	f
+ht_msgport_pending	ht_msg.c	/^int ht_msgport_pending(ht_msgport_t mp)$/;"	f
+ht_msgport_put	ht_msg.c	/^int ht_msgport_put(ht_msgport_t mp, ht_message_t *m)$/;"	f
+ht_msgport_reply	ht_msg.c	/^int ht_msgport_reply(ht_message_t *m)$/;"	f
+ht_msgport_st	ht_p.h	/^struct ht_msgport_st {$/;"	s
+ht_msgport_t	ht.h	/^typedef struct ht_msgport_st *ht_msgport_t;$/;"	t	typeref:struct:ht_msgport_st
+ht_mutex_acquire	ht_sync.c	/^int ht_mutex_acquire(ht_mutex_t *mutex, int tryonly, ht_event_t ev_extra)$/;"	f
+ht_mutex_init	ht_sync.c	/^int ht_mutex_init(ht_mutex_t *mutex)$/;"	f
+ht_mutex_release	ht_sync.c	/^int ht_mutex_release(ht_mutex_t *mutex)$/;"	f
+ht_mutex_releaseall	ht_sync.c	/^void ht_mutex_releaseall(ht_t thread)$/;"	f
+ht_mutex_st	ht.h	/^struct ht_mutex_st { \/* not hidden to avoid destructor *\/$/;"	s
+ht_mutex_t	ht.h	/^typedef struct ht_mutex_st ht_mutex_t;$/;"	t	typeref:struct:ht_mutex_st
+ht_nanosleep	ht_high.c	/^int ht_nanosleep(const struct timespec *rqtp, struct timespec *rmtp)$/;"	f
+ht_nap	ht_lib.c	/^int ht_nap(ht_time_t naptime)$/;"	f
+ht_once	ht_lib.c	/^int ht_once(ht_once_t *oncectrl, void (*constructor)(void *), void *arg)$/;"	f
+ht_once_t	ht.h	/^typedef int ht_once_t;$/;"	t
+ht_poll	ht_high.c	/^int ht_poll(struct pollfd *pfd, nfds_t nfd, int timeout)$/;"	f
+ht_poll_ev	ht_high.c	/^int ht_poll_ev(struct pollfd *pfd, nfds_t nfd, int timeout, ht_event_t ev_extra)$/;"	f
+ht_pqueue_contains	ht_pqueue.c	/^int ht_pqueue_contains(ht_pqueue_t *q, ht_t t)$/;"	f
+ht_pqueue_delete	ht_pqueue.c	/^void ht_pqueue_delete(ht_pqueue_t *q, ht_t t)$/;"	f
+ht_pqueue_delmax	ht_pqueue.c	/^ht_t ht_pqueue_delmax(ht_pqueue_t *q)$/;"	f
+ht_pqueue_elements	ht_p.h	165;"	d
+ht_pqueue_favorite	ht_pqueue.c	/^int ht_pqueue_favorite(ht_pqueue_t *q, ht_t t)$/;"	f
+ht_pqueue_favorite_prio	ht_p.h	163;"	d
+ht_pqueue_favorite_prio	ht_pqueue.c	131;"	d	file:
+ht_pqueue_head	ht_p.h	167;"	d
+ht_pqueue_increase	ht_pqueue.c	/^void ht_pqueue_increase(ht_pqueue_t *q)$/;"	f
+ht_pqueue_init	ht_pqueue.c	/^void ht_pqueue_init(ht_pqueue_t *q)$/;"	f
+ht_pqueue_insert	ht_pqueue.c	/^void ht_pqueue_insert(ht_pqueue_t *q, int prio, ht_t t)$/;"	f
+ht_pqueue_st	ht_p.h	/^struct ht_pqueue_st {$/;"	s
+ht_pqueue_t	ht_p.h	/^typedef struct ht_pqueue_st ht_pqueue_t;$/;"	t	typeref:struct:ht_pqueue_st
+ht_pqueue_tail	ht_pqueue.c	/^ht_t ht_pqueue_tail(ht_pqueue_t *q)$/;"	f
+ht_pqueue_walk	ht_pqueue.c	/^ht_t ht_pqueue_walk(ht_pqueue_t *q, ht_t t, int direction)$/;"	f
+ht_pread	ht_high.c	/^ssize_t ht_pread(int fd, void *buf, size_t nbytes, off_t offset)$/;"	f
+ht_pselect	ht_high.c	/^int ht_pselect(int nfds, fd_set *rfds, fd_set *wfds, fd_set *efds,$/;"	f
+ht_pwrite	ht_high.c	/^ssize_t ht_pwrite(int fd, const void *buf, size_t nbytes, off_t offset)$/;"	f
+ht_read	ht_high.c	/^ssize_t ht_read(int fd, void *buf, size_t nbytes)$/;"	f
+ht_read_ev	ht_high.c	/^ssize_t ht_read_ev(int fd, void *buf, size_t nbytes, ht_event_t ev_extra)$/;"	f
+ht_readv	ht_high.c	/^ssize_t ht_readv(int fd, const struct iovec *iov, int iovcnt)$/;"	f
+ht_readv_ev	ht_high.c	/^ssize_t ht_readv_ev(int fd, const struct iovec *iov, int iovcnt, ht_event_t ev_extra)$/;"	f
+ht_readv_faked	ht_high.c	/^ssize_t ht_readv_faked(int fd, const struct iovec *iov, int iovcnt)$/;"	f
+ht_recv	ht_high.c	/^ssize_t ht_recv(int s, void *buf, size_t len, int flags)$/;"	f
+ht_recv_ev	ht_high.c	/^ssize_t ht_recv_ev(int s, void *buf, size_t len, int flags, ht_event_t ev)$/;"	f
+ht_recvfrom	ht_high.c	/^ssize_t ht_recvfrom(int s, void *buf, size_t len, int flags, struct sockaddr *from, socklen_t *fromlen)$/;"	f
+ht_recvfrom_ev	ht_high.c	/^ssize_t ht_recvfrom_ev(int fd, void *buf, size_t nbytes, int flags, struct sockaddr *from, socklen_t *fromlen, ht_event_t ev_extra)$/;"	f
+ht_resume	ht_lib.c	/^int ht_resume(ht_t t)$/;"	f
+ht_ring_append	ht_ring.c	/^void ht_ring_append(ht_ring_t *r, ht_ringnode_t *rn)$/;"	f
+ht_ring_contains	ht_ring.c	/^int ht_ring_contains(ht_ring_t *r, ht_ringnode_t *rns)$/;"	f
+ht_ring_delete	ht_ring.c	/^void ht_ring_delete(ht_ring_t *r, ht_ringnode_t *rn)$/;"	f
+ht_ring_dequeue	ht_ring.c	/^ht_ringnode_t *ht_ring_dequeue(ht_ring_t *r)$/;"	f
+ht_ring_elements	ht_p.h	336;"	d
+ht_ring_elements	ht_ring.c	27;"	d	file:
+ht_ring_enqueue	ht_p.h	350;"	d
+ht_ring_enqueue	ht_ring.c	180;"	d	file:
+ht_ring_favorite	ht_ring.c	/^int ht_ring_favorite(ht_ring_t *r, ht_ringnode_t *rn)$/;"	f
+ht_ring_first	ht_p.h	338;"	d
+ht_ring_first	ht_ring.c	33;"	d	file:
+ht_ring_init	ht_ring.c	/^void ht_ring_init(ht_ring_t *r)$/;"	f
+ht_ring_insert	ht_p.h	346;"	d
+ht_ring_insert	ht_ring.c	57;"	d	file:
+ht_ring_insert_after	ht_ring.c	/^void ht_ring_insert_after(ht_ring_t *r, ht_ringnode_t *rn1, ht_ringnode_t *rn2)$/;"	f
+ht_ring_insert_before	ht_ring.c	/^void ht_ring_insert_before(ht_ring_t *r, ht_ringnode_t *rn1, ht_ringnode_t *rn2)$/;"	f
+ht_ring_last	ht_p.h	340;"	d
+ht_ring_last	ht_ring.c	39;"	d	file:
+ht_ring_next	ht_p.h	342;"	d
+ht_ring_next	ht_ring.c	45;"	d	file:
+ht_ring_pop	ht_ring.c	/^ht_ringnode_t *ht_ring_pop(ht_ring_t *r)$/;"	f
+ht_ring_prepend	ht_ring.c	/^void ht_ring_prepend(ht_ring_t *r, ht_ringnode_t *rn)$/;"	f
+ht_ring_prev	ht_p.h	344;"	d
+ht_ring_prev	ht_ring.c	51;"	d	file:
+ht_ring_push	ht_p.h	348;"	d
+ht_ring_push	ht_ring.c	147;"	d	file:
+ht_ring_st	ht.h	/^struct ht_ring_st {$/;"	s
+ht_ring_t	ht.h	/^typedef struct ht_ring_st ht_ring_t;$/;"	t	typeref:struct:ht_ring_st
+ht_ringnode_st	ht.h	/^struct ht_ringnode_st {$/;"	s
+ht_ringnode_t	ht.h	/^typedef struct ht_ringnode_st ht_ringnode_t;$/;"	t	typeref:struct:ht_ringnode_st
+ht_rwlock_acquire	ht_sync.c	/^int ht_rwlock_acquire(ht_rwlock_t *rwlock, int op, int tryonly, ht_event_t ev_extra)$/;"	f
+ht_rwlock_init	ht_sync.c	/^int ht_rwlock_init(ht_rwlock_t *rwlock)$/;"	f
+ht_rwlock_release	ht_sync.c	/^int ht_rwlock_release(ht_rwlock_t *rwlock)$/;"	f
+ht_rwlock_st	ht.h	/^struct ht_rwlock_st { \/* not hidden to avoid destructor *\/$/;"	s
+ht_rwlock_t	ht.h	/^typedef struct ht_rwlock_st ht_rwlock_t;$/;"	t	typeref:struct:ht_rwlock_st
+ht_sched	ht_sched.c	/^ht_t        ht_sched;      \/* the permanent scheduler thread        *\/$/;"	v
+ht_sched_eventmanager	ht_sched.c	/^void ht_sched_eventmanager(ht_time_t *now, int dopoll)$/;"	f
+ht_scheduler	ht_sched.c	/^void *ht_scheduler(void *dummy)$/;"	f
+ht_scheduler_drop	ht_sched.c	/^void ht_scheduler_drop(void)$/;"	f
+ht_scheduler_init	ht_sched.c	/^int ht_scheduler_init(void)$/;"	f
+ht_scheduler_kill	ht_sched.c	/^void ht_scheduler_kill(void)$/;"	f
+ht_scheduler_load	ht_sched.c	100;"	d	file:
+ht_select	ht_high.c	/^int ht_select(int nfds, fd_set *rfds, fd_set *wfds,$/;"	f
+ht_select_ev	ht_high.c	/^int ht_select_ev(int nfd, fd_set *rfds, fd_set *wfds,$/;"	f
+ht_self	ht_lib.c	/^ht_t ht_self(void)$/;"	f
+ht_send	ht_high.c	/^ssize_t ht_send(int s, const void *buf, size_t len, int flags)$/;"	f
+ht_send_ev	ht_high.c	/^ssize_t ht_send_ev(int s, const void *buf, size_t len, int flags, ht_event_t ev)$/;"	f
+ht_sendto	ht_high.c	/^ssize_t ht_sendto(int s, const void *buf, size_t len, int flags, const struct sockaddr *to, socklen_t tolen)$/;"	f
+ht_sendto_ev	ht_high.c	/^ssize_t ht_sendto_ev(int fd, const void *buf, size_t nbytes, int flags, const struct sockaddr *to, socklen_t tolen, ht_event_t ev_extra)$/;"	f
+ht_shield	ht_p.h	230;"	d
+ht_sleep	ht_high.c	/^unsigned int ht_sleep(unsigned int sec)$/;"	f
+ht_snprintf	ht_string.c	/^ht_snprintf($/;"	f
+ht_spawn	ht_lib.c	/^ht_t ht_spawn(ht_attr_t attr, void *(*func)(void *), void *arg)$/;"	f
+ht_spawn_trampoline	ht_lib.c	/^static void ht_spawn_trampoline(void)$/;"	f	file:
+ht_st	ht_p.h	/^struct ht_st {$/;"	s
+ht_state_en	ht.h	/^typedef enum ht_state_en {$/;"	g
+ht_state_names	ht_tcb.c	/^const char *ht_state_names[] = {$/;"	v
+ht_state_t	ht.h	/^} ht_state_t;$/;"	t	typeref:enum:ht_state_en
+ht_status_t	ht.h	/^} ht_status_t;$/;"	t	typeref:enum:__anon3
+ht_suspend	ht_lib.c	/^int ht_suspend(ht_t t)$/;"	f
+ht_t	ht.h	/^typedef struct ht_st *ht_t;$/;"	t	typeref:struct:ht_st
+ht_tcb_alloc	ht_tcb.c	/^ht_t ht_tcb_alloc(unsigned int stacksize, void *stackaddr)$/;"	f
+ht_tcb_free	ht_tcb.c	/^void ht_tcb_free(ht_t t)$/;"	f
+ht_thread_cleanup	ht_lib.c	/^void ht_thread_cleanup(ht_t thread)$/;"	f
+ht_thread_exists	ht_lib.c	/^int ht_thread_exists(ht_t t)$/;"	f
+ht_time	ht_time.c	/^ht_time_t ht_time(long sec, long usec)$/;"	f
+ht_time_add	ht_p.h	287;"	d
+ht_time_cmp	ht_time.c	/^int ht_time_cmp(ht_time_t *t1, ht_time_t *t2)$/;"	f
+ht_time_div	ht_time.c	/^void ht_time_div(ht_time_t *t1, int n)$/;"	f
+ht_time_equal	ht_p.h	276;"	d
+ht_time_mul	ht_time.c	/^void ht_time_mul(ht_time_t *t1, int n)$/;"	f
+ht_time_pos	ht_time.c	/^int ht_time_pos(ht_time_t *t)$/;"	f
+ht_time_set	ht_p.h	278;"	d
+ht_time_sub	ht_p.h	294;"	d
+ht_time_t	ht.h	/^typedef struct timeval ht_time_t;$/;"	t	typeref:struct:timeval
+ht_time_t2d	ht_time.c	/^double ht_time_t2d(ht_time_t *t)$/;"	f
+ht_time_t2i	ht_time.c	/^int ht_time_t2i(ht_time_t *t)$/;"	f
+ht_time_usleep	ht_time.c	/^void ht_time_usleep(unsigned long usec)$/;"	f
+ht_time_zero	ht_time.c	/^ht_time_t ht_time_zero = { 0L, 0L };$/;"	v
+ht_timeout	ht_time.c	/^ht_time_t ht_timeout(long sec, long usec)$/;"	f
+ht_uctx_create	ht_uctx.c	/^ht_uctx_create($/;"	f
+ht_uctx_destroy	ht_uctx.c	/^ht_uctx_destroy($/;"	f
+ht_uctx_make	ht_uctx.c	/^ht_uctx_make($/;"	f
+ht_uctx_st	ht_uctx.c	/^struct ht_uctx_st {$/;"	s	file:
+ht_uctx_switch	ht_uctx.c	/^ht_uctx_switch($/;"	f
+ht_uctx_t	ht.h	/^typedef struct ht_uctx_st *ht_uctx_t;$/;"	t	typeref:struct:ht_uctx_st
+ht_uctx_trampoline	ht_uctx.c	/^static void ht_uctx_trampoline(void)$/;"	f	file:
+ht_uctx_trampoline_ctx	ht_uctx.c	/^ht_uctx_trampoline_t ht_uctx_trampoline_ctx;$/;"	v
+ht_uctx_trampoline_t	ht_uctx.c	/^} ht_uctx_trampoline_t;$/;"	t	typeref:struct:__anon16	file:
+ht_usleep	ht_high.c	/^int ht_usleep(unsigned int usec)$/;"	f
+ht_util_cpystrn	ht_util.c	/^char *ht_util_cpystrn(char *dst, const char *src, size_t dst_size)$/;"	f
+ht_util_fd_valid	ht_util.c	/^int ht_util_fd_valid(int fd)$/;"	f
+ht_util_fds_merge	ht_util.c	/^void ht_util_fds_merge(int nfd,$/;"	f
+ht_util_fds_select	ht_util.c	/^int ht_util_fds_select(int nfd,$/;"	f
+ht_util_fds_test	ht_util.c	/^int ht_util_fds_test(int nfd,$/;"	f
+ht_util_min	ht_p.h	179;"	d
+ht_util_min	ht_util.c	4;"	d	file:
+ht_vasprintf	ht_string.c	/^ht_vasprintf($/;"	f
+ht_version	ht_lib.c	/^long ht_version(void)$/;"	f
+ht_vsnprintf	ht_string.c	/^ht_vsnprintf($/;"	f
+ht_wait	ht_event.c	/^int ht_wait(ht_event_t ev_ring)$/;"	f
+ht_write	ht_high.c	/^ssize_t ht_write(int fd, const void *buf, size_t nbytes)$/;"	f
+ht_write_ev	ht_high.c	/^ssize_t ht_write_ev(int fd, const void *buf, size_t nbytes, ht_event_t ev_extra)$/;"	f
+ht_writev	ht_high.c	/^ssize_t ht_writev(int fd, const struct iovec *iov, int iovcnt)$/;"	f
+ht_writev_ev	ht_high.c	/^ssize_t ht_writev_ev(int fd, const struct iovec *iov, int iovcnt, ht_event_t ev_extra)$/;"	f
+ht_writev_faked	ht_high.c	/^ssize_t ht_writev_faked(int fd, const struct iovec *iov, int iovcnt)$/;"	f
+ht_writev_iov_advance	ht_high.c	/^void ht_writev_iov_advance(const struct iovec *riov, int riovcnt, size_t advance,$/;"	f
+ht_writev_iov_bytes	ht_high.c	/^ssize_t ht_writev_iov_bytes(const struct iovec *iov, int iovcnt)$/;"	f
+ht_yield	ht_lib.c	/^int ht_yield(ht_t to)$/;"	f
+iov_base	ht.h	/^    void  *iov_base;  \/* memory base address *\/$/;"	m	struct:iovec
+iov_len	ht.h	/^    size_t iov_len;   \/* memory chunk length *\/$/;"	m	struct:iovec
+iovec	ht.h	/^struct iovec {$/;"	s
+join_arg	ht_p.h	/^   void           *join_arg;             \/* joining argument                            *\/$/;"	m	struct:ht_st
+joinable	ht_p.h	/^   int            joinable;             \/* whether thread is joinable                  *\/$/;"	m	struct:ht_st
+lastran	ht_p.h	/^   ht_time_t      lastran;              \/* time point at which thread was last running *\/$/;"	m	struct:ht_st
+lock	ht_sw.c	/^   pthread_mutex_t   lock;$/;"	m	struct:_ht_task_t	file:
+lock	queue.c	/^   pthread_mutex_t lock;$/;"	m	struct:queue_t	file:
+m_data	ht.h	/^    void          *m_data;$/;"	m	struct:ht_message_st
+m_node	ht.h	/^    ht_ringnode_t m_node;$/;"	m	struct:ht_message_st
+m_replyport	ht.h	/^    ht_msgport_t  m_replyport;$/;"	m	struct:ht_message_st
+m_size	ht.h	/^    unsigned int   m_size;$/;"	m	struct:ht_message_st
+main	ht_test.c	/^int main(int argc, const char *argv[])$/;"	f
+main	queue_test.c	/^int main()$/;"	f
+math_abs	ht_string.c	/^math_abs(LDOUBLE value)$/;"	f	file:
+math_pow10	ht_string.c	/^math_pow10(int exponent)$/;"	f	file:
+math_round	ht_string.c	/^math_round(LDOUBLE value)$/;"	f	file:
+mctx	ht_p.h	/^   ht_mctx_t      mctx;                 \/* last saved machine state of thread          *\/$/;"	m	struct:ht_st
+mctx_parent	ht_uctx.c	/^    ht_mctx_t *mctx_parent;$/;"	m	struct:__anon16	file:
+mp	ht_p.h	/^        struct { ht_msgport_t mp; }                                 MSG;$/;"	m	struct:ht_event_st::__anon7::__anon11
+mp_name	ht_p.h	/^    const char    *mp_name;  \/* optional name of message port *\/$/;"	m	struct:ht_msgport_st
+mp_node	ht_p.h	/^    ht_ringnode_t mp_node;  \/* maintainance node handle *\/$/;"	m	struct:ht_msgport_st
+mp_queue	ht_p.h	/^    ht_ring_t     mp_queue; \/* queue of messages pending on port *\/$/;"	m	struct:ht_msgport_st
+mp_tid	ht_p.h	/^    ht_t          mp_tid;   \/* corresponding thread *\/$/;"	m	struct:ht_msgport_st
+mutex	ht_p.h	/^        struct { ht_mutex_t *mutex; }                               MUTEX;$/;"	m	struct:ht_event_st::__anon7::__anon12
+mutexring	ht_p.h	/^   ht_ring_t      mutexring;            \/* ring of aquired mutex structures            *\/$/;"	m	struct:ht_st
+mx_count	ht.h	/^    unsigned long  mx_count;$/;"	m	struct:ht_mutex_st
+mx_node	ht.h	/^    ht_ringnode_t mx_node;$/;"	m	struct:ht_mutex_st
+mx_owner	ht.h	/^    ht_t          mx_owner;$/;"	m	struct:ht_mutex_st
+mx_state	ht.h	/^    int            mx_state;$/;"	m	struct:ht_mutex_st
+n	ht_p.h	/^        struct { int *n; int nfd; fd_set *rfds, *wfds, *efds; }     SELECT;$/;"	m	struct:ht_event_st::__anon7::__anon9
+name	ht_p.h	/^   char           name[HT_TCB_NAMELEN];\/* name of thread (mainly for debugging)       *\/$/;"	m	struct:ht_st
+nanosleep	ht.h	513;"	d
+next	ht_p.h	/^    ht_cleanup_t *next;$/;"	m	struct:ht_cleanup_st
+next	queue.c	/^   struct node_t * next;$/;"	m	struct:node_t	typeref:struct:node_t::node_t	file:
+nfd	ht_p.h	/^        struct { int *n; int nfd; fd_set *rfds, *wfds, *efds; }     SELECT;$/;"	m	struct:ht_event_st::__anon7::__anon9
+node_t	queue.c	/^struct node_t$/;"	s	file:
+poll	ht.h	520;"	d
+pollfd	ht.h	/^struct pollfd {$/;"	s
+pread	ht.h	531;"	d
+prio	ht_p.h	/^   int            prio;                 \/* base priority of thread                     *\/$/;"	m	struct:ht_st
+pselect	ht.h	519;"	d
+pth_errno_flag	ht_errno.c	/^int pth_errno_flag    = 0;$/;"	v
+pth_errno_storage	ht_errno.c	/^int pth_errno_storage = 0;$/;"	v
+pwrite	ht.h	532;"	d
+q_head	ht_p.h	/^   ht_t		q_head;$/;"	m	struct:ht_pqueue_st
+q_next	ht_p.h	/^   ht_t           q_next;               \/* next thread in pool                         *\/$/;"	m	struct:ht_st
+q_num	ht_p.h	/^   int      q_num;$/;"	m	struct:ht_pqueue_st
+q_prev	ht_p.h	/^   ht_t           q_prev;               \/* previous thread in pool                     *\/$/;"	m	struct:ht_st
+q_prio	ht_p.h	/^   int            q_prio;               \/* (relative) priority of thread when queued   *\/$/;"	m	struct:ht_st
+queue_addref	queue.c	/^queue_addref(struct queue_t* q)$/;"	f
+queue_create	queue.c	/^queue_create()$/;"	f
+queue_pop	queue.c	/^queue_pop(struct queue_t* q)$/;"	f
+queue_push	queue.c	/^queue_push(struct queue_t* q, void* obj)$/;"	f
+queue_rmref	queue.c	/^queue_rmref(struct queue_t* q)$/;"	f
+queue_size	queue.c	/^queue_size(struct queue_t* q)$/;"	f
+queue_t	queue.c	/^struct queue_t$/;"	s	file:
+r_hook	ht.h	/^    ht_ringnode_t *r_hook;$/;"	m	struct:ht_ring_st
+r_nodes	ht.h	/^    unsigned int    r_nodes;$/;"	m	struct:ht_ring_st
+read	ht.h	523;"	d
+readv	ht.h	525;"	d
+recv	ht.h	527;"	d
+recvfrom	ht.h	529;"	d
+ref_count	ht_sw.c	/^   int               ref_count;$/;"	m	struct:_ht_task_t	file:
+ref_count	queue.c	/^   unsigned int ref_count;$/;"	m	struct:queue_t	file:
+restored	ht_p.h	/^    int restored;$/;"	m	struct:ht_mctx_st
+revents	ht.h	/^    short revents;              \/* events found on return        *\/$/;"	m	struct:pollfd
+rfds	ht_p.h	/^        struct { int *n; int nfd; fd_set *rfds, *wfds, *efds; }     SELECT;$/;"	m	struct:ht_event_st::__anon7::__anon9
+rn_next	ht.h	/^    ht_ringnode_t *rn_next;$/;"	m	struct:ht_ringnode_st
+rn_prev	ht.h	/^    ht_ringnode_t *rn_prev;$/;"	m	struct:ht_ringnode_st
+running	ht_p.h	/^   ht_time_t      running;              \/* time range the thread was already running   *\/$/;"	m	struct:ht_st
+rw_mode	ht.h	/^    unsigned int   rw_mode;$/;"	m	struct:ht_rwlock_st
+rw_mutex_rd	ht.h	/^    ht_mutex_t    rw_mutex_rd;$/;"	m	struct:ht_rwlock_st
+rw_mutex_rw	ht.h	/^    ht_mutex_t    rw_mutex_rw;$/;"	m	struct:ht_rwlock_st
+rw_readers	ht.h	/^    unsigned long  rw_readers;$/;"	m	struct:ht_rwlock_st
+rw_state	ht.h	/^    int            rw_state;$/;"	m	struct:ht_rwlock_st
+select	ht.h	518;"	d
+send	ht.h	528;"	d
+sendto	ht.h	530;"	d
+sigprocmask	ht.h	516;"	d
+sigwait	ht.h	517;"	d
+size	queue.c	/^   int size;$/;"	m	struct:queue_t	file:
+sleep	ht.h	515;"	d
+spawned	ht_p.h	/^   ht_time_t      spawned;              \/* time point at which thread was spawned      *\/$/;"	m	struct:ht_st
+stack	ht_p.h	/^   char           *stack;                \/* pointer to thread stack                     *\/$/;"	m	struct:ht_st
+stackguard	ht_p.h	/^   long           *stackguard;           \/* stack overflow guard                        *\/$/;"	m	struct:ht_st
+stackloan	ht_p.h	/^   int            stackloan;            \/* stack type                                  *\/$/;"	m	struct:ht_st
+stacksize	ht_p.h	/^   unsigned int   stacksize;            \/* size of thread stack                        *\/$/;"	m	struct:ht_st
+start_arg	ht_p.h	/^   void           *start_arg;            \/* start argument                              *\/$/;"	m	struct:ht_st
+start_arg	ht_uctx.c	/^    void       *start_arg;$/;"	m	struct:__anon16	file:
+start_func	ht_p.h	/^   void           *(*start_func)(void *);  \/* start routine                               *\/$/;"	m	struct:ht_st
+start_func	ht_uctx.c	/^    void      (*start_func)(void *);$/;"	m	struct:__anon16	file:
+state	ht_p.h	/^   ht_state_t     state;                \/* current state indicator for thread          *\/$/;"	m	struct:ht_st
+system	ht.h	512;"	d
+task_exec_stack	ht_sw.c	/^   void *            task_exec_stack;$/;"	m	struct:_ht_task_t	file:
+task_start_point	ht_sw.c	/^   ucontext_t        task_start_point; \/\/not use the caller's ctx due to sync $/;"	m	struct:_ht_task_t	file:
+tid	ht_p.h	/^        struct { ht_t tid; }                                        TID;$/;"	m	struct:ht_event_st::__anon7::__anon14
+tv	ht_p.h	/^        struct { ht_event_func_t func; void *arg; ht_time_t tv; }   FUNC;$/;"	m	struct:ht_event_st::__anon7::__anon15
+tv	ht_p.h	/^        struct { ht_time_t tv; }                                    TIME;$/;"	m	struct:ht_event_st::__anon7::__anon10
+uc	ht_p.h	/^    ucontext_t uc;$/;"	m	struct:ht_mctx_st
+uc_mctx	ht_uctx.c	/^    ht_mctx_t  uc_mctx;      \/* saved underlying machine context *\/$/;"	m	struct:ht_uctx_st	file:
+uc_mctx_set	ht_uctx.c	/^    int         uc_mctx_set;  \/* whether uc_mctx is set *\/$/;"	m	struct:ht_uctx_st	file:
+uc_stack_len	ht_uctx.c	/^    size_t      uc_stack_len; \/* size of stack area *\/$/;"	m	struct:ht_uctx_st	file:
+uc_stack_own	ht_uctx.c	/^    int         uc_stack_own; \/* whether stack were allocated by us *\/$/;"	m	struct:ht_uctx_st	file:
+uc_stack_ptr	ht_uctx.c	/^    char       *uc_stack_ptr; \/* pointer to start address of stack area *\/$/;"	m	struct:ht_uctx_st	file:
+uctx_after	ht_uctx.c	/^    ht_uctx_t  uctx_after;$/;"	m	struct:__anon16	file:
+uctx_this	ht_uctx.c	/^    ht_uctx_t  uctx_this;$/;"	m	struct:__anon16	file:
+used	ht_data.c	/^    int used;$/;"	m	struct:ht_keytab_st	file:
+usleep	ht.h	514;"	d
+waitpid	ht.h	511;"	d
+wfds	ht_p.h	/^        struct { int *n; int nfd; fd_set *rfds, *wfds, *efds; }     SELECT;$/;"	m	struct:ht_event_st::__anon7::__anon9
+worker_cond_started	ht_sw.c	/^pthread_cond_t worker_cond_started = PTHREAD_COND_INITIALIZER;$/;"	v
+worker_resume_ctx	ht_sw.c	/^   ucontext_t          worker_resume_ctx;$/;"	m	struct:_ht_worker_ctx_t	file:
+worker_start_mutex	ht_sw.c	/^pthread_mutex_t worker_start_mutex = PTHREAD_MUTEX_INITIALIZER;$/;"	v
+write	ht.h	524;"	d
+writev	ht.h	526;"	d

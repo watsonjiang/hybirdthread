@@ -7,7 +7,8 @@ const char *ht_state_names[] = {
 #define SIGSTKSZ 8192
 
 /* allocate a thread control block */
-ht_t ht_tcb_alloc(unsigned int stacksize, void *stackaddr)
+ht_t 
+ht_tcb_alloc(unsigned int stacksize, void *stackaddr)
 {
     ht_t t;
 
@@ -36,7 +37,8 @@ ht_t ht_tcb_alloc(unsigned int stacksize, void *stackaddr)
 }
 
 /* free a thread control block */
-void ht_tcb_free(ht_t t)
+void 
+ht_tcb_free(ht_t t)
 {
     if (t == NULL)
         return;

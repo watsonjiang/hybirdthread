@@ -5,7 +5,8 @@
         ((a) > (b) ? (b) : (a))
 
 /* copy a string like strncpy() but always null-terminate */
-char *ht_util_cpystrn(char *dst, const char *src, size_t dst_size)
+char *
+ht_util_cpystrn(char *dst, const char *src, size_t dst_size)
 {
     register char *d, *end;
 
@@ -22,7 +23,8 @@ char *ht_util_cpystrn(char *dst, const char *src, size_t dst_size)
 }
 
 /* check whether a file-descriptor is valid */
-int ht_util_fd_valid(int fd)
+int 
+ht_util_fd_valid(int fd)
 {
     if (fd < 0 || fd >= FD_SETSIZE)
         return FALSE;
@@ -32,10 +34,11 @@ int ht_util_fd_valid(int fd)
 }
 
 /* merge input fd set into output fds */
-void ht_util_fds_merge(int nfd,
-                               fd_set *ifds1, fd_set *ofds1,
-                               fd_set *ifds2, fd_set *ofds2,
-                               fd_set *ifds3, fd_set *ofds3)
+void 
+ht_util_fds_merge(int nfd,
+                  fd_set *ifds1, fd_set *ofds1,
+                  fd_set *ifds2, fd_set *ofds2,
+                  fd_set *ifds3, fd_set *ofds3)
 {
     register int s;
 
@@ -54,7 +57,8 @@ void ht_util_fds_merge(int nfd,
 }
 
 /* test whether fds in the input fd sets occurred in the output fds */
-int ht_util_fds_test(int nfd,
+int 
+ht_util_fds_test(int nfd,
                              fd_set *ifds1, fd_set *ofds1,
                              fd_set *ifds2, fd_set *ofds2,
                              fd_set *ifds3, fd_set *ofds3)
@@ -80,10 +84,11 @@ int ht_util_fds_test(int nfd,
  * number of remaining input fds. This number uses BSD select(2) semantics: a
  * fd in two set counts twice!
  */
-int ht_util_fds_select(int nfd,
-                               fd_set *ifds1, fd_set *ofds1,
-                               fd_set *ifds2, fd_set *ofds2,
-                               fd_set *ifds3, fd_set *ofds3)
+int 
+ht_util_fds_select(int nfd,
+                   fd_set *ifds1, fd_set *ofds1,
+                   fd_set *ifds2, fd_set *ofds2,
+                   fd_set *ifds3, fd_set *ofds3)
 {
     register int s;
     register int n;

@@ -5,7 +5,8 @@
 static ht_ring_t ht_msgport = HT_RING_INIT;
 
 /* create a new message port */
-ht_msgport_t ht_msgport_create(const char *name)
+ht_msgport_t 
+ht_msgport_create(const char *name)
 {
     ht_msgport_t mp;
 
@@ -27,7 +28,8 @@ ht_msgport_t ht_msgport_create(const char *name)
 }
 
 /* delete a message port */
-void ht_msgport_destroy(ht_msgport_t mp)
+void 
+ht_msgport_destroy(ht_msgport_t mp)
 {
     ht_message_t *m;
 
@@ -49,7 +51,8 @@ void ht_msgport_destroy(ht_msgport_t mp)
 }
 
 /* find a known message port through name */
-ht_msgport_t ht_msgport_find(const char *name)
+ht_msgport_t 
+ht_msgport_find(const char *name)
 {
     ht_msgport_t mp, mpf;
 
@@ -73,7 +76,8 @@ ht_msgport_t ht_msgport_find(const char *name)
 }
 
 /* number of messages on a port */
-int ht_msgport_pending(ht_msgport_t mp)
+int 
+ht_msgport_pending(ht_msgport_t mp)
 {
     if (mp == NULL)
         return ht_error(-1, EINVAL);
@@ -81,7 +85,8 @@ int ht_msgport_pending(ht_msgport_t mp)
 }
 
 /* put a message on a port */
-int ht_msgport_put(ht_msgport_t mp, ht_message_t *m)
+int 
+ht_msgport_put(ht_msgport_t mp, ht_message_t *m)
 {
     if (mp == NULL)
         return ht_error(FALSE, EINVAL);
@@ -90,7 +95,8 @@ int ht_msgport_put(ht_msgport_t mp, ht_message_t *m)
 }
 
 /* get top message from a port */
-ht_message_t *ht_msgport_get(ht_msgport_t mp)
+ht_message_t *
+ht_msgport_get(ht_msgport_t mp)
 {
     ht_message_t *m;
 
@@ -101,7 +107,8 @@ ht_message_t *ht_msgport_get(ht_msgport_t mp)
 }
 
 /* reply message to sender */
-int ht_msgport_reply(ht_message_t *m)
+int 
+ht_msgport_reply(ht_message_t *m)
 {
     if (m == NULL)
         return ht_error(FALSE, EINVAL);

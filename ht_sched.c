@@ -18,7 +18,8 @@ static ht_time_t   ht_loadticknext;
 static ht_time_t   ht_loadtickgap = HT_TIME(1,0);
 
 /* initialize the scheduler ingredients */
-int ht_scheduler_init(void)
+int 
+ht_scheduler_init(void)
 {
     /* initialize the essential threads */
     ht_sched   = NULL;
@@ -42,7 +43,8 @@ int ht_scheduler_init(void)
 }
 
 /* drop all threads (except for the currently active one) */
-void ht_scheduler_drop(void)
+void 
+ht_scheduler_drop(void)
 {
     ht_t t;
 
@@ -74,7 +76,8 @@ void ht_scheduler_drop(void)
 }
 
 /* kill the scheduler ingredients */
-void ht_scheduler_kill(void)
+void 
+ht_scheduler_kill(void)
 {
     /* drop all threads */
     ht_scheduler_drop();
@@ -112,7 +115,8 @@ void ht_scheduler_kill(void)
     }
 
 /* the heart of this library: the thread scheduler */
-void *ht_scheduler(void *dummy)
+void 
+*ht_scheduler(void *dummy)
 {
     ht_time_t running;
     ht_time_t snapshot;
@@ -285,7 +289,8 @@ void *ht_scheduler(void *dummy)
  * Look whether some events already occurred (or failed) and move
  * corresponding threads from waiting queue back to ready queue.
  */
-void ht_sched_eventmanager(ht_time_t *now, int dopoll)
+void 
+ht_sched_eventmanager(ht_time_t *now, int dopoll)
 {
     ht_t nexttimer_thread;
     ht_event_t nexttimer_ev;

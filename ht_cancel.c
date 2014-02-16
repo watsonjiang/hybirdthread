@@ -1,7 +1,8 @@
 #include "ht_p.h"
 
 /* set cancellation state */
-void ht_cancel_state(int newstate, int *oldstate)
+void 
+ht_cancel_state(int newstate, int *oldstate)
 {
     if (oldstate != NULL)
         *oldstate = ht_current->cancelstate;
@@ -11,7 +12,8 @@ void ht_cancel_state(int newstate, int *oldstate)
 }
 
 /* enter a cancellation point */
-void ht_cancel_point(void)
+void 
+ht_cancel_point(void)
 {
     if (   ht_current->cancelreq == TRUE
         && ht_current->cancelstate & HT_CANCEL_ENABLE) {
@@ -24,7 +26,8 @@ void ht_cancel_point(void)
 }
 
 /* cancel a thread (the friendly way) */
-int ht_cancel(ht_t thread)
+int 
+ht_cancel(ht_t thread)
 {
     ht_pqueue_t *q;
 
@@ -78,7 +81,8 @@ int ht_cancel(ht_t thread)
 }
 
 /* abort a thread (the cruel way) */
-int ht_abort(ht_t thread)
+int 
+ht_abort(ht_t thread)
 {
     if (thread == NULL)
         return ht_error(FALSE, EINVAL);

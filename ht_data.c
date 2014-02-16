@@ -7,7 +7,8 @@ struct ht_keytab_st {
 
 static struct ht_keytab_st ht_keytab[HT_KEY_MAX];
 
-int ht_key_create(ht_key_t *key, void (*func)(void *))
+int 
+ht_key_create(ht_key_t *key, void (*func)(void *))
 {
     if (key == NULL)
         return ht_error(FALSE, EINVAL);
@@ -21,7 +22,8 @@ int ht_key_create(ht_key_t *key, void (*func)(void *))
     return ht_error(FALSE, EAGAIN);
 }
 
-int ht_key_delete(ht_key_t key)
+int 
+ht_key_delete(ht_key_t key)
 {
     if (key < 0 || key >= HT_KEY_MAX)
         return ht_error(FALSE, EINVAL);
@@ -31,7 +33,8 @@ int ht_key_delete(ht_key_t key)
     return TRUE;
 }
 
-int ht_key_setdata(ht_key_t key, const void *value)
+int 
+ht_key_setdata(ht_key_t key, const void *value)
 {
     if (key < 0 || key >= HT_KEY_MAX)
         return ht_error(FALSE, EINVAL);
@@ -54,7 +57,8 @@ int ht_key_setdata(ht_key_t key, const void *value)
     return TRUE;
 }
 
-void *ht_key_getdata(ht_key_t key)
+void *
+ht_key_getdata(ht_key_t key)
 {
     if (key < 0 || key >= HT_KEY_MAX)
         return ht_error((void *)NULL, EINVAL);
@@ -65,7 +69,8 @@ void *ht_key_getdata(ht_key_t key)
     return (void *)ht_current->data_value[key];
 }
 
-void ht_key_destroydata(ht_t t)
+void 
+ht_key_destroydata(ht_t t)
 {
     void *data;
     int key;

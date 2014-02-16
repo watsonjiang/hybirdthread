@@ -1,6 +1,7 @@
 #include "ht_p.h"
 
-int ht_cleanup_push(void (*func)(void *), void *arg)
+int 
+ht_cleanup_push(void (*func)(void *), void *arg)
 {
     ht_cleanup_t *cleanup;
 
@@ -15,7 +16,8 @@ int ht_cleanup_push(void (*func)(void *), void *arg)
     return TRUE;
 }
 
-int ht_cleanup_pop(int execute)
+int 
+ht_cleanup_pop(int execute)
 {
     ht_cleanup_t *cleanup;
     int rc;
@@ -31,7 +33,8 @@ int ht_cleanup_pop(int execute)
     return rc;
 }
 
-void ht_cleanup_popall(ht_t t, int execute)
+void 
+ht_cleanup_popall(ht_t t, int execute)
 {
     ht_cleanup_t *cleanup;
 

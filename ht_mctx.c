@@ -14,7 +14,8 @@
  * straight-foreward.
  */
 
-int ht_mctx_set(
+int 
+ht_mctx_set(
     ht_mctx_t *mctx, void (*func)(void), char *sk_addr_lo, char *sk_addr_hi)
 {
     /* fetch current context */

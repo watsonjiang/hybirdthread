@@ -1,7 +1,9 @@
 #include "ht_p.h"
 
 /* event structure destructor */
-static void ht_event_destructor(void *vp)
+static 
+void 
+ht_event_destructor(void *vp)
 {
     /* free this single(!) event. That it is just a single event is a
        requirement for ht_event(HT_MODE_STATIC, ...), or else we would
@@ -11,7 +13,8 @@ static void ht_event_destructor(void *vp)
 }
 
 /* event structure constructor */
-ht_event_t ht_event(unsigned long spec, ...)
+ht_event_t 
+ht_event(unsigned long spec, ...)
 {
     ht_event_t ev;
     ht_key_t *ev_key;
@@ -149,7 +152,8 @@ ht_event_t ht_event(unsigned long spec, ...)
 }
 
 /* determine type of event */
-unsigned long ht_event_typeof(ht_event_t ev)
+unsigned long 
+ht_event_typeof(ht_event_t ev)
 {
     if (ev == NULL)
         return ht_error(0, EINVAL);
@@ -157,7 +161,8 @@ unsigned long ht_event_typeof(ht_event_t ev)
 }
 
 /* event extractor */
-int ht_event_extract(ht_event_t ev, ...)
+int 
+ht_event_extract(ht_event_t ev, ...)
 {
     va_list ap;
 
@@ -212,7 +217,8 @@ int ht_event_extract(ht_event_t ev, ...)
 }
 
 /* concatenate one or more events or event rings */
-ht_event_t ht_event_concat(ht_event_t evf, ...)
+ht_event_t 
+ht_event_concat(ht_event_t evf, ...)
 {
     ht_event_t evc; /* current event */
     ht_event_t evn; /* next event */
@@ -245,7 +251,8 @@ ht_event_t ht_event_concat(ht_event_t evf, ...)
 }
 
 /* isolate one event from a possible appended event ring */
-ht_event_t ht_event_isolate(ht_event_t ev)
+ht_event_t 
+ht_event_isolate(ht_event_t ev)
 {
     ht_event_t ring;
 
@@ -263,7 +270,8 @@ ht_event_t ht_event_isolate(ht_event_t ev)
 }
 
 /* determine status of the event */
-ht_status_t ht_event_status(ht_event_t ev)
+ht_status_t 
+ht_event_status(ht_event_t ev)
 {
     if (ev == NULL)
         return ht_error(FALSE, EINVAL);
@@ -271,7 +279,8 @@ ht_status_t ht_event_status(ht_event_t ev)
 }
 
 /* walk to next or previous event in an event ring */
-ht_event_t ht_event_walk(ht_event_t ev, unsigned int direction)
+ht_event_t 
+ht_event_walk(ht_event_t ev, unsigned int direction)
 {
     if (ev == NULL)
         return ht_error((ht_event_t)NULL, EINVAL);
@@ -287,7 +296,8 @@ ht_event_t ht_event_walk(ht_event_t ev, unsigned int direction)
 }
 
 /* deallocate an event structure */
-int ht_event_free(ht_event_t ev, int mode)
+int 
+ht_event_free(ht_event_t ev, int mode)
 {
     ht_event_t evc;
     ht_event_t evn;
@@ -311,7 +321,8 @@ int ht_event_free(ht_event_t ev, int mode)
 }
 
 /* wait for one or more events */
-int ht_wait(ht_event_t ev_ring)
+int 
+ht_wait(ht_event_t ev_ring)
 {
     int nonpending;
     ht_event_t ev;

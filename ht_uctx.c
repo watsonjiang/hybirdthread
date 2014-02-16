@@ -48,7 +48,9 @@ typedef struct {
 ht_uctx_trampoline_t ht_uctx_trampoline_ctx;
 
 /* trampoline function for ht_uctx_make() */
-static void ht_uctx_trampoline(void)
+static 
+void 
+ht_uctx_trampoline(void)
 {
     volatile ht_uctx_trampoline_t ctx;
 

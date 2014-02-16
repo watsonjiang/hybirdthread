@@ -8,7 +8,8 @@
 #include "ht_p.h"
 
 /* Pth variant of nanosleep(2) */
-int ht_nanosleep(const struct timespec *rqtp, struct timespec *rmtp)
+int 
+ht_nanosleep(const struct timespec *rqtp, struct timespec *rmtp)
 {
     ht_time_t until;
     ht_time_t offset;
@@ -48,7 +49,8 @@ int ht_nanosleep(const struct timespec *rqtp, struct timespec *rmtp)
 }
 
 /* Pth variant of usleep(3) */
-int ht_usleep(unsigned int usec)
+int 
+ht_usleep(unsigned int usec)
 {
     ht_time_t until;
     ht_time_t offset;
@@ -73,7 +75,8 @@ int ht_usleep(unsigned int usec)
 }
 
 /* Pth variant of sleep(3) */
-unsigned int ht_sleep(unsigned int sec)
+unsigned int 
+ht_sleep(unsigned int sec)
 {
     ht_time_t until;
     ht_time_t offset;
@@ -98,14 +101,16 @@ unsigned int ht_sleep(unsigned int sec)
 }
 
 /* Pth variant of select(2) */
-int ht_select(int nfds, fd_set *rfds, fd_set *wfds,
+int 
+ht_select(int nfds, fd_set *rfds, fd_set *wfds,
                fd_set *efds, struct timeval *timeout)
 {
     return ht_select_ev(nfds, rfds, wfds, efds, timeout, NULL);
 }
 
 /* Pth variant of select(2) with extra events */
-int ht_select_ev(int nfd, fd_set *rfds, fd_set *wfds,
+int 
+ht_select_ev(int nfd, fd_set *rfds, fd_set *wfds,
                   fd_set *efds, struct timeval *timeout, ht_event_t ev_extra)
 {
     struct timeval delay;
@@ -244,7 +249,8 @@ int ht_select_ev(int nfd, fd_set *rfds, fd_set *wfds,
 }
 
 /* Pth variant of ht_pselect(2) */
-int ht_pselect(int nfds, fd_set *rfds, fd_set *wfds, fd_set *efds,
+int 
+ht_pselect(int nfds, fd_set *rfds, fd_set *wfds, fd_set *efds,
                 const struct timespec *ts, const sigset_t *mask)
 {
     sigset_t omask;
@@ -276,7 +282,8 @@ int ht_pselect(int nfds, fd_set *rfds, fd_set *wfds, fd_set *efds,
 }
 
 /* Pth variant of poll(2) */
-int ht_poll(struct pollfd *pfd, nfds_t nfd, int timeout)
+int 
+ht_poll(struct pollfd *pfd, nfds_t nfd, int timeout)
 {
     return ht_poll_ev(pfd, nfd, timeout, NULL);
 }
@@ -284,7 +291,8 @@ int ht_poll(struct pollfd *pfd, nfds_t nfd, int timeout)
 /* Pth variant of poll(2) with extra events:
    NOTICE: THIS HAS TO BE BASED ON ht_select(2) BECAUSE
            INTERNALLY THE SCHEDULER IS ONLY select(2) BASED!! */
-int ht_poll_ev(struct pollfd *pfd, nfds_t nfd, int timeout, ht_event_t ev_extra)
+int 
+ht_poll_ev(struct pollfd *pfd, nfds_t nfd, int timeout, ht_event_t ev_extra)
 {
     fd_set rfds, wfds, efds, xfds;
     struct timeval tv, *ptv;
@@ -409,13 +417,15 @@ int ht_poll_ev(struct pollfd *pfd, nfds_t nfd, int timeout, ht_event_t ev_extra)
 }
 
 /* Pth variant of connect(2) */
-int ht_connect(int s, const struct sockaddr *addr, socklen_t addrlen)
+int 
+ht_connect(int s, const struct sockaddr *addr, socklen_t addrlen)
 {
     return ht_connect_ev(s, addr, addrlen, NULL);
 }
 
 /* Pth variant of connect(2) with extra events */
-int ht_connect_ev(int s, const struct sockaddr *addr, socklen_t addrlen, ht_event_t ev_extra)
+int 
+ht_connect_ev(int s, const struct sockaddr *addr, socklen_t addrlen, ht_event_t ev_extra)
 {
     ht_event_t ev;
     static ht_key_t ev_key = HT_KEY_INIT;
@@ -467,13 +477,15 @@ int ht_connect_ev(int s, const struct sockaddr *addr, socklen_t addrlen, ht_even
 }
 
 /* Pth variant of accept(2) */
-int ht_accept(int s, struct sockaddr *addr, socklen_t *addrlen)
+int 
+ht_accept(int s, struct sockaddr *addr, socklen_t *addrlen)
 {
     return ht_accept_ev(s, addr, addrlen, NULL);
 }
 
 /* Pth variant of accept(2) with extra events */
-int ht_accept_ev(int s, struct sockaddr *addr, socklen_t *addrlen, ht_event_t ev_extra)
+int 
+ht_accept_ev(int s, struct sockaddr *addr, socklen_t *addrlen, ht_event_t ev_extra)
 {
     ht_event_t ev;
     static ht_key_t ev_key = HT_KEY_INIT;
@@ -527,13 +539,15 @@ int ht_accept_ev(int s, struct sockaddr *addr, socklen_t *addrlen, ht_event_t ev
 }
 
 /* Pth variant of read(2) */
-ssize_t ht_read(int fd, void *buf, size_t nbytes)
+ssize_t 
+ht_read(int fd, void *buf, size_t nbytes)
 {
     return ht_read_ev(fd, buf, nbytes, NULL);
 }
 
 /* Pth variant of read(2) with extra event(s) */
-ssize_t ht_read_ev(int fd, void *buf, size_t nbytes, ht_event_t ev_extra)
+ssize_t 
+ht_read_ev(int fd, void *buf, size_t nbytes, ht_event_t ev_extra)
 {
     struct timeval delay;
     ht_event_t ev;
@@ -598,13 +612,15 @@ ssize_t ht_read_ev(int fd, void *buf, size_t nbytes, ht_event_t ev_extra)
 }
 
 /* Pth variant of write(2) */
-ssize_t ht_write(int fd, const void *buf, size_t nbytes)
+ssize_t 
+ht_write(int fd, const void *buf, size_t nbytes)
 {
     return ht_write_ev(fd, buf, nbytes, NULL);
 }
 
 /* Pth variant of write(2) with extra event(s) */
-ssize_t ht_write_ev(int fd, const void *buf, size_t nbytes, ht_event_t ev_extra)
+ssize_t 
+ht_write_ev(int fd, const void *buf, size_t nbytes, ht_event_t ev_extra)
 {
     struct timeval delay;
     ht_event_t ev;
@@ -699,13 +715,15 @@ ssize_t ht_write_ev(int fd, const void *buf, size_t nbytes, ht_event_t ev_extra)
 }
 
 /* Pth variant of readv(2) */
-ssize_t ht_readv(int fd, const struct iovec *iov, int iovcnt)
+ssize_t 
+ht_readv(int fd, const struct iovec *iov, int iovcnt)
 {
     return ht_readv_ev(fd, iov, iovcnt, NULL);
 }
 
 /* Pth variant of readv(2) with extra event(s) */
-ssize_t ht_readv_ev(int fd, const struct iovec *iov, int iovcnt, ht_event_t ev_extra)
+ssize_t 
+ht_readv_ev(int fd, const struct iovec *iov, int iovcnt, ht_event_t ev_extra)
 {
     struct timeval delay;
     ht_event_t ev;
@@ -817,13 +835,15 @@ ssize_t ht_readv_faked(int fd, const struct iovec *iov, int iovcnt)
 }
 
 /* Pth variant of writev(2) */
-ssize_t ht_writev(int fd, const struct iovec *iov, int iovcnt)
+ssize_t 
+ht_writev(int fd, const struct iovec *iov, int iovcnt)
 {
     return ht_writev_ev(fd, iov, iovcnt, NULL);
 }
 
 /* Pth variant of writev(2) with extra event(s) */
-ssize_t ht_writev_ev(int fd, const struct iovec *iov, int iovcnt, ht_event_t ev_extra)
+ssize_t 
+ht_writev_ev(int fd, const struct iovec *iov, int iovcnt, ht_event_t ev_extra)
 {
     struct timeval delay;
     ht_event_t ev;
@@ -956,7 +976,8 @@ ssize_t ht_writev_ev(int fd, const struct iovec *iov, int iovcnt, ht_event_t ev_
 }
 
 /* calculate number of bytes in a struct iovec */
-ssize_t ht_writev_iov_bytes(const struct iovec *iov, int iovcnt)
+ssize_t 
+ht_writev_iov_bytes(const struct iovec *iov, int iovcnt)
 {
     ssize_t bytes;
     int i;
@@ -971,9 +992,10 @@ ssize_t ht_writev_iov_bytes(const struct iovec *iov, int iovcnt)
 }
 
 /* advance the virtual pointer of a struct iov */
-void ht_writev_iov_advance(const struct iovec *riov, int riovcnt, size_t advance,
-                                   struct iovec **liov, int *liovcnt,
-                                   struct iovec *tiov, int tiovcnt)
+void 
+ht_writev_iov_advance(const struct iovec *riov, int riovcnt, size_t advance,
+                            struct iovec **liov, int *liovcnt,
+                            struct iovec *tiov, int tiovcnt)
 {
     int i;
 
@@ -1009,7 +1031,8 @@ void ht_writev_iov_advance(const struct iovec *riov, int riovcnt, size_t advance
 }
 
 /* A faked version of writev(2) */
-ssize_t ht_writev_faked(int fd, const struct iovec *iov, int iovcnt)
+ssize_t 
+ht_writev_faked(int fd, const struct iovec *iov, int iovcnt)
 {
     char *buffer, *cp;
     size_t bytes, to_copy, copy, rv;
@@ -1050,7 +1073,8 @@ ssize_t ht_writev_faked(int fd, const struct iovec *iov, int iovcnt)
 }
 
 /* Pth variant of POSIX pread(3) */
-ssize_t ht_pread(int fd, void *buf, size_t nbytes, off_t offset)
+ssize_t 
+ht_pread(int fd, void *buf, size_t nbytes, off_t offset)
 {
     static ht_mutex_t mutex = HT_MUTEX_INIT;
     off_t old_offset;
@@ -1083,7 +1107,8 @@ ssize_t ht_pread(int fd, void *buf, size_t nbytes, off_t offset)
 }
 
 /* Pth variant of POSIX pwrite(3) */
-ssize_t ht_pwrite(int fd, const void *buf, size_t nbytes, off_t offset)
+ssize_t 
+ht_pwrite(int fd, const void *buf, size_t nbytes, off_t offset)
 {
     static ht_mutex_t mutex = HT_MUTEX_INIT;
     off_t old_offset;
@@ -1116,25 +1141,29 @@ ssize_t ht_pwrite(int fd, const void *buf, size_t nbytes, off_t offset)
 }
 
 /* Pth variant of SUSv2 recv(2) */
-ssize_t ht_recv(int s, void *buf, size_t len, int flags)
+ssize_t 
+ht_recv(int s, void *buf, size_t len, int flags)
 {
     return ht_recv_ev(s, buf, len, flags, NULL);
 }
 
 /* Pth variant of SUSv2 recv(2) with extra event(s) */
-ssize_t ht_recv_ev(int s, void *buf, size_t len, int flags, ht_event_t ev)
+ssize_t 
+ht_recv_ev(int s, void *buf, size_t len, int flags, ht_event_t ev)
 {
     return ht_recvfrom_ev(s, buf, len, flags, NULL, 0, ev);
 }
 
 /* Pth variant of SUSv2 recvfrom(2) */
-ssize_t ht_recvfrom(int s, void *buf, size_t len, int flags, struct sockaddr *from, socklen_t *fromlen)
+ssize_t 
+ht_recvfrom(int s, void *buf, size_t len, int flags, struct sockaddr *from, socklen_t *fromlen)
 {
     return ht_recvfrom_ev(s, buf, len, flags, from, fromlen, NULL);
 }
 
 /* Pth variant of SUSv2 recvfrom(2) with extra event(s) */
-ssize_t ht_recvfrom_ev(int fd, void *buf, size_t nbytes, int flags, struct sockaddr *from, socklen_t *fromlen, ht_event_t ev_extra)
+ssize_t 
+ht_recvfrom_ev(int fd, void *buf, size_t nbytes, int flags, struct sockaddr *from, socklen_t *fromlen, ht_event_t ev_extra)
 {
     struct timeval delay;
     ht_event_t ev;
@@ -1201,25 +1230,29 @@ ssize_t ht_recvfrom_ev(int fd, void *buf, size_t nbytes, int flags, struct socka
 }
 
 /* Pth variant of SUSv2 send(2) */
-ssize_t ht_send(int s, const void *buf, size_t len, int flags)
+ssize_t 
+ht_send(int s, const void *buf, size_t len, int flags)
 {
     return ht_send_ev(s, buf, len, flags, NULL);
 }
 
 /* Pth variant of SUSv2 send(2) with extra event(s) */
-ssize_t ht_send_ev(int s, const void *buf, size_t len, int flags, ht_event_t ev)
+ssize_t 
+ht_send_ev(int s, const void *buf, size_t len, int flags, ht_event_t ev)
 {
     return ht_sendto_ev(s, buf, len, flags, NULL, 0, ev);
 }
 
 /* Pth variant of SUSv2 sendto(2) */
-ssize_t ht_sendto(int s, const void *buf, size_t len, int flags, const struct sockaddr *to, socklen_t tolen)
+ssize_t 
+ht_sendto(int s, const void *buf, size_t len, int flags, const struct sockaddr *to, socklen_t tolen)
 {
     return ht_sendto_ev(s, buf, len, flags, to, tolen, NULL);
 }
 
 /* Pth variant of SUSv2 sendto(2) with extra event(s) */
-ssize_t ht_sendto_ev(int fd, const void *buf, size_t nbytes, int flags, const struct sockaddr *to, socklen_t tolen, ht_event_t ev_extra)
+ssize_t 
+ht_sendto_ev(int fd, const void *buf, size_t nbytes, int flags, const struct sockaddr *to, socklen_t tolen, ht_event_t ev_extra)
 {
     struct timeval delay;
     ht_event_t ev;

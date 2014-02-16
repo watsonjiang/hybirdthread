@@ -1,7 +1,8 @@
 #include "ht.h"
 #include "ht_p.h"
 
-void ht_debug(const char *file, int line, int argc, const char *fmt, ...)
+void 
+ht_debug(const char *file, int line, int argc, const char *fmt, ...)
 {
     va_list ap;
     static char str[1024];
@@ -27,7 +28,8 @@ void ht_debug(const char *file, int line, int argc, const char *fmt, ...)
 }
 
 /* dump out a page to stderr summarizing the internal state of Pth */
-void ht_dumpstate(FILE *fp)
+void 
+ht_dumpstate(FILE *fp)
 {
     fprintf(fp, "+----------------------------------------------------------------------\n");
     fprintf(fp, "| Pth Version: %s\n", HT_VERSION_STR);
@@ -44,7 +46,8 @@ void ht_dumpstate(FILE *fp)
     return;
 }
 
-void ht_dumpqueue(FILE *fp, const char *qn, ht_pqueue_t *q)
+void 
+ht_dumpqueue(FILE *fp, const char *qn, ht_pqueue_t *q)
 {
     ht_t t;
     int n;

@@ -3,7 +3,8 @@
 #include "ht.h"
 #include <unistd.h>
 #include <pthread.h>
-void* f1(void *)
+void* 
+f1(void *)
 {
    printf("enter f1\n");
    int counter = 0;
@@ -18,7 +19,8 @@ void* f1(void *)
    }
 }
 
-void* f2(void *)
+void* 
+f2(void *)
 {
    for(;;){
       printf("f2 ht_bg_exec_begin(), thread id %d\n", pthread_self());
@@ -31,7 +33,8 @@ void* f2(void *)
    }
 }
 
-void * f3(void*)
+void * 
+f3(void*)
 {
    for(;;){
       ht_bg_exec_begin();
@@ -43,7 +46,8 @@ void * f3(void*)
    }
 }
 
-int main(int argc, const char *argv[])
+int 
+main(int argc, const char *argv[])
 {
 
    ht_init(1);

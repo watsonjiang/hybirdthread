@@ -160,6 +160,7 @@ struct ht_pqueue_st {
    ht_t		q_head;
    int      q_num;
 };
+/* determine priority required to favorite a thread; O(1) */
 #define ht_pqueue_favorite_prio(q) \
     ((q)->q_head != NULL ? (q)->q_head->q_prio + 1 : HT_PRIO_MAX)
 #define ht_pqueue_elements(q) \
@@ -333,20 +334,28 @@ struct ht_event_st {
     } ev_args;
 };
 /* ht_ring.c */
+/* return number of nodes in ring; O(1) */
 #define ht_ring_elements(r) \
     ((r) == NULL ? (-1) : (r)->r_nodes)
+/* return first node in ring; O(1) */
 #define ht_ring_first(r) \
     ((r) == NULL ? NULL : (r)->r_hook)
+/* return last node in ring; O(1) */
 #define ht_ring_last(r) \
     ((r) == NULL ? NULL : ((r)->r_hook == NULL ? NULL : (r)->r_hook->rn_prev))
+/* walk to next node in ring; O(1) */
 #define ht_ring_next(r, rn) \
     (((r) == NULL || (rn) == NULL) ? NULL : ((rn)->rn_next == (r)->r_hook ? NULL : (rn)->rn_next))
+/* walk to previous node in ring; O(1) */
 #define ht_ring_prev(r, rn) \
     (((r) == NULL || (rn) == NULL) ? NULL : ((rn)->rn_prev == (r)->r_hook->rn_prev ? NULL : (rn)->rn_prev))
+/* insert node into ring; O(1) */
 #define ht_ring_insert(r, rn) \
     ht_ring_append((r), (rn))
+/* treat ring as stack: push node onto stack; O(1) */
 #define ht_ring_push(r, rn) \
     ht_ring_prepend((r), (rn))
+/* treat ring as queue: enqueue node; O(1) */
 #define ht_ring_enqueue(r, rn) \
     ht_ring_prepend((r), (rn))
 extern void ht_ring_init(ht_ring_t *);

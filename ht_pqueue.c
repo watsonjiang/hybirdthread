@@ -4,7 +4,8 @@
 #include "ht_p.h"
 
 /* initialize a priority queue; O(1) */
-void ht_pqueue_init(ht_pqueue_t *q)
+void 
+ht_pqueue_init(ht_pqueue_t *q)
 {
     if (q != NULL) {
         q->q_head = NULL;
@@ -14,7 +15,8 @@ void ht_pqueue_init(ht_pqueue_t *q)
 }
 
 /* insert thread into priority queue; O(n) */
-void ht_pqueue_insert(ht_pqueue_t *q, int prio, ht_t t)
+void 
+ht_pqueue_insert(ht_pqueue_t *q, int prio, ht_t t)
 {
     ht_t c;
     int p;
@@ -59,7 +61,8 @@ void ht_pqueue_insert(ht_pqueue_t *q, int prio, ht_t t)
 }
 
 /* remove thread with maximum priority from priority queue; O(1) */
-ht_t ht_pqueue_delmax(ht_pqueue_t *q)
+ht_t 
+ht_pqueue_delmax(ht_pqueue_t *q)
 {
     ht_t t;
 
@@ -90,7 +93,8 @@ ht_t ht_pqueue_delmax(ht_pqueue_t *q)
 }
 
 /* remove thread from priority queue; O(n) */
-void ht_pqueue_delete(ht_pqueue_t *q, ht_t t)
+void 
+ht_pqueue_delete(ht_pqueue_t *q, ht_t t)
 {
     if (q == NULL)
         return;
@@ -126,14 +130,9 @@ void ht_pqueue_delete(ht_pqueue_t *q, ht_t t)
     return;
 }
 
-/* determine priority required to favorite a thread; O(1) */
-#if cpp
-#define ht_pqueue_favorite_prio(q) \
-    ((q)->q_head != NULL ? (q)->q_head->q_prio + 1 : HT_PRIO_MAX)
-#endif
-
 /* move a thread inside queue to the top; O(n) */
-int ht_pqueue_favorite(ht_pqueue_t *q, ht_t t)
+int 
+ht_pqueue_favorite(ht_pqueue_t *q, ht_t t)
 {
     if (q == NULL)
         return FALSE;
@@ -149,7 +148,8 @@ int ht_pqueue_favorite(ht_pqueue_t *q, ht_t t)
 }
 
 /* increase priority of all(!) threads in queue; O(1) */
-void ht_pqueue_increase(ht_pqueue_t *q)
+void 
+ht_pqueue_increase(ht_pqueue_t *q)
 {
     if (q == NULL)
         return;
@@ -161,7 +161,8 @@ void ht_pqueue_increase(ht_pqueue_t *q)
 }
 
 /* walk to last thread in queue */
-ht_t ht_pqueue_tail(ht_pqueue_t *q)
+ht_t 
+ht_pqueue_tail(ht_pqueue_t *q)
 {
     if (q == NULL)
         return NULL;
@@ -171,7 +172,8 @@ ht_t ht_pqueue_tail(ht_pqueue_t *q)
 }
 
 /* walk to next or previous thread in queue; O(1) */
-ht_t ht_pqueue_walk(ht_pqueue_t *q, ht_t t, int direction)
+ht_t 
+ht_pqueue_walk(ht_pqueue_t *q, ht_t t, int direction)
 {
     ht_t tn;
 
@@ -191,7 +193,8 @@ ht_t ht_pqueue_walk(ht_pqueue_t *q, ht_t t, int direction)
 }
 
 /* check whether a thread is in a queue; O(n) */
-int ht_pqueue_contains(ht_pqueue_t *q, ht_t t)
+int 
+ht_pqueue_contains(ht_pqueue_t *q, ht_t t)
 {
     ht_t tc;
     int found;

@@ -1,24 +1,3 @@
-/*
- * Copyright Patrick Powell 1995
- * This code is based on code written by Patrick Powell <papowell@astart.com>
- * It may be used for any purpose as long as this notice remains intact
- * on all source code distributions.
- */
-
-/*
- * This code contains numerious changes and enhancements which were
- * made by lots of contributors over the last years to Patrick Powell's
- * original code:
- *
- * o Patrick Powell <papowell@astart.com>      (1995)
- * o Brandon Long <blong@fiction.net>          (1996, for Mutt)
- * o Thomas Roessler <roessler@guug.de>        (1998, for Mutt)
- * o Michael Elkins <me@cs.hmc.edu>            (1998, for Mutt)
- * o Andrew Tridgell <tridge@samba.org>        (1998, for Samba)
- * o Luke Mewburn <lukem@netbsd.org>           (1999, for LukemFTP)
- * o Ralf S. Engelschall <rse@engelschall.com> (1999, for OSSP)
- */
-
 #include "ht_p.h"
 
 #if HAVE_LONGLONG

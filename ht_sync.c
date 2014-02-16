@@ -4,7 +4,8 @@
 **  Mutual Exclusion Locks
 */
 
-int ht_mutex_init(ht_mutex_t *mutex)
+int 
+ht_mutex_init(ht_mutex_t *mutex)
 {
     if (mutex == NULL)
         return ht_error(FALSE, EINVAL);
@@ -14,7 +15,8 @@ int ht_mutex_init(ht_mutex_t *mutex)
     return TRUE;
 }
 
-int ht_mutex_acquire(ht_mutex_t *mutex, int tryonly, ht_event_t ev_extra)
+int 
+ht_mutex_acquire(ht_mutex_t *mutex, int tryonly, ht_event_t ev_extra)
 {
     static ht_key_t ev_key = HT_KEY_INIT;
     ht_event_t ev;
@@ -74,7 +76,8 @@ int ht_mutex_acquire(ht_mutex_t *mutex, int tryonly, ht_event_t ev_extra)
     return TRUE;
 }
 
-int ht_mutex_release(ht_mutex_t *mutex)
+int 
+ht_mutex_release(ht_mutex_t *mutex)
 {
     /* consistency checks */
     if (mutex == NULL)
@@ -97,7 +100,8 @@ int ht_mutex_release(ht_mutex_t *mutex)
     return TRUE;
 }
 
-void ht_mutex_releaseall(ht_t thread)
+void 
+ht_mutex_releaseall(ht_t thread)
 {
     ht_ringnode_t *rn, *rnf;
 
@@ -118,7 +122,8 @@ void ht_mutex_releaseall(ht_t thread)
 **  Read-Write Locks
 */
 
-int ht_rwlock_init(ht_rwlock_t *rwlock)
+int 
+ht_rwlock_init(ht_rwlock_t *rwlock)
 {
     if (rwlock == NULL)
         return ht_error(FALSE, EINVAL);
@@ -129,7 +134,8 @@ int ht_rwlock_init(ht_rwlock_t *rwlock)
     return TRUE;
 }
 
-int ht_rwlock_acquire(ht_rwlock_t *rwlock, int op, int tryonly, ht_event_t ev_extra)
+int 
+ht_rwlock_acquire(ht_rwlock_t *rwlock, int op, int tryonly, ht_event_t ev_extra)
 {
     /* consistency checks */
     if (rwlock == NULL)
@@ -162,7 +168,8 @@ int ht_rwlock_acquire(ht_rwlock_t *rwlock, int op, int tryonly, ht_event_t ev_ex
     return TRUE;
 }
 
-int ht_rwlock_release(ht_rwlock_t *rwlock)
+int 
+ht_rwlock_release(ht_rwlock_t *rwlock)
 {
     /* consistency checks */
     if (rwlock == NULL)
@@ -198,7 +205,8 @@ int ht_rwlock_release(ht_rwlock_t *rwlock)
 **  Condition Variables
 */
 
-int ht_cond_init(ht_cond_t *cond)
+int 
+ht_cond_init(ht_cond_t *cond)
 {
     if (cond == NULL)
         return ht_error(FALSE, EINVAL);
@@ -207,7 +215,9 @@ int ht_cond_init(ht_cond_t *cond)
     return TRUE;
 }
 
-static void ht_cond_cleanup_handler(void *_cleanvec)
+static 
+void 
+ht_cond_cleanup_handler(void *_cleanvec)
 {
     ht_mutex_t *mutex = (ht_mutex_t *)(((void **)_cleanvec)[0]);
     ht_cond_t  *cond  = (ht_cond_t  *)(((void **)_cleanvec)[1]);
@@ -221,7 +231,8 @@ static void ht_cond_cleanup_handler(void *_cleanvec)
     return;
 }
 
-int ht_cond_await(ht_cond_t *cond, ht_mutex_t *mutex, ht_event_t ev_extra)
+int 
+ht_cond_await(ht_cond_t *cond, ht_mutex_t *mutex, ht_event_t ev_extra)
 {
     static ht_key_t ev_key = HT_KEY_INIT;
     void *cleanvec[2];
@@ -270,7 +281,8 @@ int ht_cond_await(ht_cond_t *cond, ht_mutex_t *mutex, ht_event_t ev_extra)
     return TRUE;
 }
 
-int ht_cond_notify(ht_cond_t *cond, int broadcast)
+int 
+ht_cond_notify(ht_cond_t *cond, int broadcast)
 {
     /* consistency checks */
     if (cond == NULL)
@@ -300,7 +312,8 @@ int ht_cond_notify(ht_cond_t *cond, int broadcast)
 **  Barriers
 */
 
-int ht_barrier_init(ht_barrier_t *barrier, int threshold)
+int 
+ht_barrier_init(ht_barrier_t *barrier, int threshold)
 {
     if (barrier == NULL || threshold <= 0)
         return ht_error(FALSE, EINVAL);
@@ -315,7 +328,8 @@ int ht_barrier_init(ht_barrier_t *barrier, int threshold)
     return TRUE;
 }
 
-int ht_barrier_reach(ht_barrier_t *barrier)
+int 
+ht_barrier_reach(ht_barrier_t *barrier)
 {
     int cancel, cycle;
     int rv;

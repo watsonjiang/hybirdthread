@@ -13,7 +13,8 @@
 #include "ht_p.h"
 
 /* initialize ring; O(1) */
-void ht_ring_init(ht_ring_t *r)
+void 
+ht_ring_init(ht_ring_t *r)
 {
     if (r == NULL)
         return;
@@ -22,44 +23,9 @@ void ht_ring_init(ht_ring_t *r)
     return;
 }
 
-/* return number of nodes in ring; O(1) */
-#if cpp
-#define ht_ring_elements(r) \
-    ((r) == NULL ? (-1) : (r)->r_nodes)
-#endif
-
-/* return first node in ring; O(1) */
-#if cpp
-#define ht_ring_first(r) \
-    ((r) == NULL ? NULL : (r)->r_hook)
-#endif
-
-/* return last node in ring; O(1) */
-#if cpp
-#define ht_ring_last(r) \
-    ((r) == NULL ? NULL : ((r)->r_hook == NULL ? NULL : (r)->r_hook->rn_prev))
-#endif
-
-/* walk to next node in ring; O(1) */
-#if cpp
-#define ht_ring_next(r, rn) \
-    (((r) == NULL || (rn) == NULL) ? NULL : ((rn)->rn_next == (r)->r_hook ? NULL : (rn)->rn_next))
-#endif
-
-/* walk to previous node in ring; O(1) */
-#if cpp
-#define ht_ring_prev(r, rn) \
-    (((r) == NULL || (rn) == NULL) ? NULL : ((rn)->rn_prev == (r)->r_hook->rn_prev ? NULL : (rn)->rn_prev))
-#endif
-
-/* insert node into ring; O(1) */
-#if cpp
-#define ht_ring_insert(r, rn) \
-    ht_ring_append((r), (rn))
-#endif
-
 /* insert node after a second node in ring; O(1) */
-void ht_ring_insert_after(ht_ring_t *r, ht_ringnode_t *rn1, ht_ringnode_t *rn2)
+void 
+ht_ring_insert_after(ht_ring_t *r, ht_ringnode_t *rn1, ht_ringnode_t *rn2)
 {
     if (r == NULL || rn1 == NULL || rn2 == NULL)
         return;
@@ -72,7 +38,8 @@ void ht_ring_insert_after(ht_ring_t *r, ht_ringnode_t *rn1, ht_ringnode_t *rn2)
 }
 
 /* insert node before a second node in ring; O(1) */
-void ht_ring_insert_before(ht_ring_t *r, ht_ringnode_t *rn1, ht_ringnode_t *rn2)
+void 
+ht_ring_insert_before(ht_ring_t *r, ht_ringnode_t *rn1, ht_ringnode_t *rn2)
 {
     if (r == NULL || rn1 == NULL || rn2 == NULL)
         return;
@@ -85,7 +52,8 @@ void ht_ring_insert_before(ht_ring_t *r, ht_ringnode_t *rn1, ht_ringnode_t *rn2)
 }
 
 /* delete an node from ring; O(1) */
-void ht_ring_delete(ht_ring_t *r, ht_ringnode_t *rn)
+void 
+ht_ring_delete(ht_ring_t *r, ht_ringnode_t *rn)
 {
     if (r == NULL || rn == NULL)
         return;
@@ -102,7 +70,8 @@ void ht_ring_delete(ht_ring_t *r, ht_ringnode_t *rn)
 }
 
 /* prepend an node to ring; O(1) */
-void ht_ring_prepend(ht_ring_t *r, ht_ringnode_t *rn)
+void 
+ht_ring_prepend(ht_ring_t *r, ht_ringnode_t *rn)
 {
     if (r == NULL || rn == NULL)
         return;
@@ -123,7 +92,8 @@ void ht_ring_prepend(ht_ring_t *r, ht_ringnode_t *rn)
 }
 
 /* append an node to ring; O(1) */
-void ht_ring_append(ht_ring_t *r, ht_ringnode_t *rn)
+void 
+ht_ring_append(ht_ring_t *r, ht_ringnode_t *rn)
 {
     if (r == NULL || rn == NULL)
         return;
@@ -142,14 +112,9 @@ void ht_ring_append(ht_ring_t *r, ht_ringnode_t *rn)
     return;
 }
 
-/* treat ring as stack: push node onto stack; O(1) */
-#if cpp
-#define ht_ring_push(r, rn) \
-    ht_ring_prepend((r), (rn))
-#endif
-
 /* treat ring as stack: pop node from stack; O(1) */
-ht_ringnode_t *ht_ring_pop(ht_ring_t *r)
+ht_ringnode_t *
+ht_ring_pop(ht_ring_t *r)
 {
     ht_ringnode_t *rn;
 
@@ -160,7 +125,8 @@ ht_ringnode_t *ht_ring_pop(ht_ring_t *r)
 }
 
 /* treat ring as queue: favorite a node in the ring; O(1) */
-int ht_ring_favorite(ht_ring_t *r, ht_ringnode_t *rn)
+int 
+ht_ring_favorite(ht_ring_t *r, ht_ringnode_t *rn)
 {
     if (r == NULL)
         return FALSE;
@@ -175,14 +141,9 @@ int ht_ring_favorite(ht_ring_t *r, ht_ringnode_t *rn)
     return TRUE;
 }
 
-/* treat ring as queue: enqueue node; O(1) */
-#if cpp
-#define ht_ring_enqueue(r, rn) \
-    ht_ring_prepend((r), (rn))
-#endif
-
 /* treat ring as queue: dequeue node; O(1) */
-ht_ringnode_t *ht_ring_dequeue(ht_ring_t *r)
+ht_ringnode_t *
+ht_ring_dequeue(ht_ring_t *r)
 {
     ht_ringnode_t *rn;
 
@@ -193,7 +154,8 @@ ht_ringnode_t *ht_ring_dequeue(ht_ring_t *r)
 }
 
 /* check whether node is contained in ring; O(n) */
-int ht_ring_contains(ht_ring_t *r, ht_ringnode_t *rns)
+int 
+ht_ring_contains(ht_ring_t *r, ht_ringnode_t *rns)
 {
     ht_ringnode_t *rn;
     int rc;

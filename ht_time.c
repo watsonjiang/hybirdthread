@@ -3,14 +3,16 @@
 ht_time_t ht_time_zero = { 0L, 0L };
 
 /* sleep for a specified amount of microseconds */
-void ht_time_usleep(unsigned long usec)
+void 
+ht_time_usleep(unsigned long usec)
 {
     usleep((unsigned int )usec);
     return;
 }
 
 /* time value constructor */
-ht_time_t ht_time(long sec, long usec)
+ht_time_t 
+ht_time(long sec, long usec)
 {
     ht_time_t tv;
 
@@ -20,7 +22,8 @@ ht_time_t ht_time(long sec, long usec)
 }
 
 /* timeout value constructor */
-ht_time_t ht_timeout(long sec, long usec)
+ht_time_t 
+ht_timeout(long sec, long usec)
 {
     ht_time_t tv;
     ht_time_t tvd;
@@ -33,7 +36,8 @@ ht_time_t ht_timeout(long sec, long usec)
 }
 
 /* calculate: t1 <=> t2 */
-int ht_time_cmp(ht_time_t *t1, ht_time_t *t2)
+int 
+ht_time_cmp(ht_time_t *t1, ht_time_t *t2)
 {
     int rc;
 
@@ -44,7 +48,8 @@ int ht_time_cmp(ht_time_t *t1, ht_time_t *t2)
 }
 
 /* calculate: t1 = t1 / n */
-void ht_time_div(ht_time_t *t1, int n)
+void 
+ht_time_div(ht_time_t *t1, int n)
 {
     long q, r;
 
@@ -60,7 +65,8 @@ void ht_time_div(ht_time_t *t1, int n)
 }
 
 /* calculate: t1 = t1 * n */
-void ht_time_mul(ht_time_t *t1, int n)
+void 
+ht_time_mul(ht_time_t *t1, int n)
 {
     t1->tv_sec  *= n;
     t1->tv_usec *= n;
@@ -70,7 +76,8 @@ void ht_time_mul(ht_time_t *t1, int n)
 }
 
 /* convert a time structure into a double value */
-double ht_time_t2d(ht_time_t *t)
+double 
+ht_time_t2d(ht_time_t *t)
 {
     double d;
 
@@ -79,7 +86,8 @@ double ht_time_t2d(ht_time_t *t)
 }
 
 /* convert a time structure into a integer value */
-int ht_time_t2i(ht_time_t *t)
+int 
+ht_time_t2i(ht_time_t *t)
 {
     int i;
 
@@ -88,7 +96,8 @@ int ht_time_t2i(ht_time_t *t)
 }
 
 /* check whether time is positive */
-int ht_time_pos(ht_time_t *t)
+int 
+ht_time_pos(ht_time_t *t)
 {
     if (t->tv_sec > 0 && t->tv_usec > 0)
         return 1;
