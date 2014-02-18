@@ -26,4 +26,4 @@ libht.so: $(OBJS)
 	gcc $(LDFLAGS) -o $@ $^   
 
 clean:
-	rm -rf a.out *.o
+	rm -rf $(BINS) *.o
