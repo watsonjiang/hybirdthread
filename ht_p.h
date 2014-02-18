@@ -325,6 +325,7 @@ struct ht_event_st {
     union {
         struct { int fd; }                                          FD;
         struct { int *n; int nfd; fd_set *rfds, *wfds, *efds; }     SELECT;
+		  struct { int fini; }                                        TASK;
         struct { ht_time_t tv; }                                    TIME;
         struct { ht_msgport_t mp; }                                 MSG;
         struct { ht_mutex_t *mutex; }                               MUTEX;

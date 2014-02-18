@@ -153,6 +153,7 @@ struct ht_event_st;
     /* event subject classes */
 #define HT_EVENT_FD                 _BIT(1)
 #define HT_EVENT_SELECT             _BIT(2)
+#define HT_EVENT_TASK               _BIT(3)
 #define HT_EVENT_TIME               _BIT(4)
 #define HT_EVENT_MSG                _BIT(5)
 #define HT_EVENT_MUTEX              _BIT(6)

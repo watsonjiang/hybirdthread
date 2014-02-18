@@ -114,10 +114,14 @@ ht_worker_init(int num_worker)
 int 
 ht_hand_out()
 {
-   ht_task_t* task = malloc(sizeof(ht_task_t));
-   task->t_caller_ctx = ht_self();
-   task->t_fin_flag = 0;
-   
+	/* make a waiting ring 
+		and link event ring to current thread */
+   ht_event_t ev = ht_event(HT_EVENT_TASK); 
+   ht_current->events = ev;
+   /* set the thread to WAIT_FOR_SCHED_TO_WORKER 
+	  and transfer control to scheduler */
+	ht_current->state = HT_STATE_WAITING_FOR_SCHED_TO_WORKER;
+	ht_yield(NULL);
 }
 
 int 

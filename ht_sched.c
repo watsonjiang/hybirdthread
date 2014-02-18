@@ -247,6 +247,16 @@ void
             ht_current = NULL;
         }
 
+        /* If thread wants to be scheduled to native worker thread, 
+			* send the ht_t to worker task queue, then move thread to
+			* wait state.
+         */
+		  if (ht_current != NULL && ht_current->state == HT_STATE_WAITING_FOR_SCHED_TO_WORKER) {
+			  ht_debug2("ht_scheduler: put thread \"%s\" to worker task queue",
+					       ht_current->name);
+			  ht_tqueue_insert(&ht_woker_task_queue, ht_current);
+			  ht_current->state = HT_STATE_WAITING;
+		  }
         /*
          * If thread wants to wait for an event
          * move it to waiting queue now
@@ -371,6 +381,11 @@ ht_sched_eventmanager(ht_time_t *now, int dopoll)
                     if (fdmax < ev->ev_args.SELECT.nfd-1)
                         fdmax = ev->ev_args.SELECT.nfd-1;
                 }
+					 /* Task finished */
+					 else if (ev->ev_type == HT_EVENT_TASK) {
+						  if (ev->ev_args.TASK.fini != 0)
+                        this_occurred = TRUE;
+					 }
                 /* Timer */
                 else if (ev->ev_type == HT_EVENT_TIME) {
                     if (ht_time_cmp(&(ev->ev_args.TIME.tv), now) < 0)

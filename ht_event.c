@@ -88,6 +88,12 @@ ht_event(unsigned long spec, ...)
         ev->ev_args.SELECT.wfds = wfds;
         ev->ev_args.SELECT.efds = efds;
     }
+	 else if (spec & HT_EVENT_TASK) {
+		  /* task fini event */
+        ev->ev_type = HT_EVENT_TASK;
+		  ev->ev_goal = (int)(spec & (HT_UNTIL_OCCURRED));
+		  ev->ev_args.TASK.fini = 0;
+	 }
     else if (spec & HT_EVENT_TIME) {
         /* interrupt request event */
         ht_time_t tv = va_arg(ap, ht_time_t);
