@@ -112,6 +112,10 @@ typedef enum ht_state_en {
     HT_STATE_NEW,                   /* spawned, but still not dispatched       */
     HT_STATE_READY,                 /* ready, waiting to be dispatched         */
     HT_STATE_WAITING,               /* suspended, waiting until event occurred */
+    HT_STATE_WAITING_FOR_SCHED_TO_WORKER,  /* a tempo state, scheduler send 
+                                              thread to task queue and move it
+                                              to HT_STATE_WAITING              */
+
     HT_STATE_DEAD                   /* terminated, waiting to be joined        */
 } ht_state_t;
 

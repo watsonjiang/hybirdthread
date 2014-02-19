@@ -3,14 +3,14 @@
 // to avoid warning.
 #pragma GCC diagnostic ignored "-Waddress"
 
-ht_t        ht_main;       /* the main thread                       */
-ht_t        ht_sched;      /* the permanent scheduler thread        */
-ht_t        ht_current;    /* the currently running thread          */
-ht_pqueue_t ht_NQ;         /* queue of new threads                  */
-ht_pqueue_t ht_RQ;         /* queue of threads ready to run         */
-ht_pqueue_t ht_WQ;         /* queue of threads waiting for an event */
-ht_pqueue_t ht_SQ;         /* queue of suspended threads            */
-ht_pqueue_t ht_DQ;         /* queue of terminated threads           */
+ht_t         ht_main;       /* the main thread                       */
+ht_t         ht_sched;      /* the permanent scheduler thread        */
+ht_t         ht_current;    /* the currently running thread          */
+ht_pqueue_t  ht_NQ;         /* queue of new threads                  */
+ht_pqueue_t  ht_RQ;         /* queue of threads ready to run         */
+ht_pqueue_t  ht_WQ;         /* queue of threads waiting for an event */
+ht_pqueue_t  ht_SQ;         /* queue of suspended threads            */
+ht_pqueue_t  ht_DQ;         /* queue of terminated threads           */
 int          ht_favournew;  /* favour new threads on startup         */
 float        ht_loadval;    /* average scheduler load value          */
 
@@ -254,7 +254,7 @@ void
 		  if (ht_current != NULL && ht_current->state == HT_STATE_WAITING_FOR_SCHED_TO_WORKER) {
 			  ht_debug2("ht_scheduler: put thread \"%s\" to worker task queue",
 					       ht_current->name);
-			  ht_tqueue_insert(&ht_woker_task_queue, ht_current);
+			  ht_tqueue_enqueue(&ht_TQ, ht_current);
 			  ht_current->state = HT_STATE_WAITING;
 		  }
         /*

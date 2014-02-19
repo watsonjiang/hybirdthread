@@ -21,7 +21,7 @@
 #include <sys/socket.h>
 #include <time.h>
 #include <ucontext.h>
-
+#include <pthread.h>
 /* public API headers */
 #include "ht.h"
 
@@ -154,6 +154,21 @@ struct ht_st {
 };
 extern ht_t ht_tcb_alloc(unsigned int, void *);
 extern void ht_tcb_free(ht_t);
+/* ht_tqueue.c */
+typedef struct ht_tqueue_st ht_tqueue_t;
+struct ht_tqueue_st {
+   ht_t*           q_list;
+   int             q_size;
+   int             q_head;
+   int             q_rear;
+   pthread_mutex_t q_lock;
+   pthread_cond_t  q_not_empty;
+   pthread_cond_t  q_not_full;
+};
+extern int ht_tqueue_init(ht_tqueue_t *, int size);
+extern int ht_tqueue_enqueue(ht_tqueue_t *, ht_t);
+extern ht_t ht_tqueue_dequeue(ht_tqueue_t *); 
+extern unsigned int ht_tqueue_elements(ht_tqueue_t *);
 /* ht_pqueue.c */
 typedef struct ht_pqueue_st ht_pqueue_t;
 struct ht_pqueue_st {
@@ -193,6 +208,7 @@ extern ht_pqueue_t ht_RQ;
 extern ht_pqueue_t ht_WQ;
 extern ht_pqueue_t ht_SQ;
 extern ht_pqueue_t ht_DQ;
+extern ht_tqueue_t ht_TQ;
 extern int ht_favournew;
 extern float ht_loadval;
 extern int ht_initialized;
