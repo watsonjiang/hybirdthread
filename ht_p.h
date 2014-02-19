@@ -169,6 +169,7 @@ extern int ht_tqueue_init(ht_tqueue_t *, int size);
 extern int ht_tqueue_enqueue(ht_tqueue_t *, ht_t);
 extern ht_t ht_tqueue_dequeue(ht_tqueue_t *); 
 extern unsigned int ht_tqueue_elements(ht_tqueue_t *);
+extern void ht_tqueue_free(ht_tqueue_t *);
 /* ht_pqueue.c */
 typedef struct ht_pqueue_st ht_pqueue_t;
 struct ht_pqueue_st {

@@ -33,8 +33,8 @@ ht_tqueue_enqueue(ht_tqueue_t * q, ht_t t)
    pthread_mutex_lock(&q->q_lock);
    if(ht_tqueue_elements(q) == q->q_size)
       pthread_cond_wait(&q->q_not_full, &q->q_lock);
-   q->q_head = (q->q_head + 1) % q->q_size;
    q->q_list[q->q_head] = t;
+   q->q_head = (q->q_head + 1) % q->q_size;
    pthread_cond_signal(&q->q_not_empty);
    pthread_mutex_unlock(&q->q_lock);
    return 0;
@@ -51,4 +51,14 @@ ht_tqueue_dequeue(ht_tqueue_t * q)
    pthread_cond_signal(&q->q_not_full);
    pthread_mutex_unlock(&q->q_lock);
    return r;
+}
+
+void
+ht_tqueue_free(ht_tqueue_t * q)
+{
+   pthread_cond_destroy(&q->q_not_full);
+	pthread_cond_destroy(&q->q_not_empty);
+	pthread_mutex_destroy(&q->q_lock);
+	free(q->q_list);
+	q->q_list = NULL;
 }
