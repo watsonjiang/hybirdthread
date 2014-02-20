@@ -3,7 +3,7 @@ CFLAGS=  -g \
          -fpic \
          -Wall \
          -Werror \
-         -Wfatal-errors
+         -Wfatal-errors 
          
 
 LDFLAGS=-g \
@@ -18,18 +18,21 @@ OBJS=ht_errno.o ht_string.o ht_debug.o ht_util.o ht_attr.o ht_time.o ht_pqueue.o
 
 BINS=libht.so
 
-TEST_BINS=ht_tqueue_test 
+TEST_BINS=ht_tqueue_test ht_worker_test
 
 all: $(BINS)
 
 test: $(TEST_BINS)
-	for i in ${TEST_BINS}; do export LD_LIBRARY_PATH=.;./$$i; done
+	for i in ${TEST_BINS}; do echo -e "$$i.....\c";export LD_LIBRARY_PATH=.;./$$i; echo "done"; done
 
 libht.so: $(OBJS)
 	gcc $(LDFLAGS) -o $@ $^   
 
 ht_tqueue_test: libht.so ht_tqueue_test.o
-	gcc ${CFLAGS} -L. -lht -lpthread -o $@ $^
+	gcc ${CFLAGS} -L. -lht -lpthread -o $@ ht_tqueue_test.o
+
+ht_worker_test: libht.so ht_worker_test.o 
+	gcc ${CFLAGS} -L. -lht -lpthread -o $@ ht_worker_test.o
 
 clean:
 	rm -rf $(BINS) $(TEST_BINS) *.o

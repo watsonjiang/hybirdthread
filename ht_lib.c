@@ -29,7 +29,10 @@ ht_init(void)
     if (!ht_scheduler_init()) {
         return ht_error(FALSE, EAGAIN);
     }
-
+    /* initialize the worker */
+    if (ht_worker_init(3)) {
+       return ht_error(FALSE, EAGAIN);
+    }
     /* spawn the scheduler thread */
     t_attr = ht_attr_new();
     ht_attr_set(t_attr, HT_ATTR_PRIO,         HT_PRIO_MAX);
