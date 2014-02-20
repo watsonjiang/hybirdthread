@@ -8,10 +8,10 @@ test1()
    ht_tqueue_init(&testQ, 3);
    struct ht_st t;
    ht_tqueue_enqueue(&testQ, &t);
-   HT_TEST_ASSERT(1 != ht_tqueue_elements(&testQ),
+   HT_TEST_ASSERT(1 == ht_tqueue_elements(&testQ),
                   "ht_tqueue_elements did not return expected result.");
    ht_t r = ht_tqueue_dequeue(&testQ);
-   HT_TEST_ASSERT(r != &t,
+   HT_TEST_ASSERT(r == &t,
                   "ht_tqueue_dequeue did not return expected result.");
    ht_tqueue_destroy(&testQ);
 }
@@ -36,11 +36,11 @@ test2()
    time_t start, end;
    time(&start);
    pthread_create(&t, NULL, test2_worker, (void*) &q);
-   HT_TEST_ASSERT(0 != ht_tqueue_elements(&q), 
+   HT_TEST_ASSERT(0 == ht_tqueue_elements(&q), 
 			         "ht_tqueue_elements did not return expected value.");
    ht_tqueue_dequeue(&q);
    time(&end);
-   HT_TEST_ASSERT((end - start < 3),
+   HT_TEST_ASSERT((end - start >= 3),
                   "error: ht_tqueue_dequeue did not block when queue is empty");
    ht_tqueue_destroy(&q);
 }
@@ -56,7 +56,6 @@ test3_worker(void * argv)
    return NULL;
 }
 
-
 void
 test3()
 {
@@ -67,13 +66,32 @@ test3()
    time_t start, end;
    time(&start);
    pthread_create(&t, NULL, test3_worker, (void*) &q);
-	HT_TEST_ASSERT(0 == ht_tqueue_elements(&q), 
+	HT_TEST_ASSERT(1 == ht_tqueue_elements(&q), 
 			         "ht_tqueue_elements did not return expected value.");
    ht_tqueue_enqueue(&q, NULL);
    time(&end);
-   HT_TEST_ASSERT(end - start < 3, 
+   HT_TEST_ASSERT(end - start >= 3, 
 			         "ht_tqueue_enqueue did not block when queue is full.");
    ht_tqueue_destroy(&q);
+}
+
+void test4()
+{
+   ht_tqueue_t q;
+   ht_tqueue_init(&q, 2);
+   struct ht_st t;
+   ht_tqueue_enqueue(&q, &t);
+   HT_TEST_ASSERT(1 == ht_tqueue_elements(&q), "");
+   HT_TEST_ASSERT(&t == ht_tqueue_dequeue(&q), "");
+   HT_TEST_ASSERT(0 == ht_tqueue_elements(&q), "");
+   ht_tqueue_enqueue(&q, &t);
+   HT_TEST_ASSERT(1 == ht_tqueue_elements(&q), "");
+   HT_TEST_ASSERT(&t == ht_tqueue_dequeue(&q), "");
+   HT_TEST_ASSERT(0 == ht_tqueue_elements(&q), "");
+    ht_tqueue_enqueue(&q, &t);
+   HT_TEST_ASSERT(1 == ht_tqueue_elements(&q), "");
+   HT_TEST_ASSERT(&t == ht_tqueue_dequeue(&q), "");
+   HT_TEST_ASSERT(0 == ht_tqueue_elements(&q), "");
 }
 
 int 
@@ -82,5 +100,6 @@ main()
    test1();
    test2();
    test3();
+   test4();
    return 0;
 }
