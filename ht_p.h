@@ -141,16 +141,16 @@ struct ht_st {
    void           *join_arg;             /* joining argument                            */
 
    /* per-thread specific storage */
-   const void     **data_value;           /* thread specific  values                     */
-   int            data_count;           /* number of stored values                     */
+   const void     **data_value;           /* thread specific  values          */
+   int            data_count;           /* number of stored values            */
 
    /* cancellation support */
-   int            cancelreq;            /* cancellation request is pending             */
-   unsigned int   cancelstate;          /* cancellation state of thread                */
-   ht_cleanup_t   *cleanups;             /* stack of thread cleanup handlers            */
+   int            cancelreq;            /* cancellation request is pending    */
+   unsigned int   cancelstate;          /* cancellation state of thread       */
+   ht_cleanup_t   *cleanups;             /* stack of thread cleanup handlers  */
 
    /* mutex ring */
-   ht_ring_t      mutexring;            /* ring of aquired mutex structures            */
+   ht_ring_t      mutexring;            /* ring of aquired mutex structures   */
 };
 extern ht_t ht_tcb_alloc(unsigned int, void *);
 extern void ht_tcb_free(ht_t);
@@ -161,6 +161,9 @@ struct ht_tqueue_st {
    int             q_size;
    int             q_head;
    int             q_rear;
+   int             q_isfull;            /* since both empty and full lead to
+                                           head==rear, set extra flag to indicate 
+                                           these two states   */
    pthread_mutex_t q_lock;
    pthread_cond_t  q_not_empty;
    pthread_cond_t  q_not_full;
@@ -169,7 +172,7 @@ extern int ht_tqueue_init(ht_tqueue_t *, int size);
 extern int ht_tqueue_enqueue(ht_tqueue_t *, ht_t);
 extern ht_t ht_tqueue_dequeue(ht_tqueue_t *); 
 extern unsigned int ht_tqueue_elements(ht_tqueue_t *);
-extern void ht_tqueue_free(ht_tqueue_t *);
+extern void ht_tqueue_destroy(ht_tqueue_t *);
 /* ht_pqueue.c */
 typedef struct ht_pqueue_st ht_pqueue_t;
 struct ht_pqueue_st {
