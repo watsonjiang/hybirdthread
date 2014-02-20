@@ -32,6 +32,6 @@ ht_tqueue_test: libht.so ht_tqueue_test.o
 	gcc ${CFLAGS} -L. -lht -lpthread -o $@ $^
 
 clean:
-	rm -rf $(BINS) *.o
+	rm -rf $(BINS) $(TEST_BINS) *.o
 
 .PHONY: clean all test

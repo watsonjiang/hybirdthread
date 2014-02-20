@@ -1,5 +1,5 @@
 #include "ht_p.h"
-
+#include "ht_test.h"
 /* test enqueue, elements, dequeue */
 void 
 test1()
@@ -8,17 +8,11 @@ test1()
    ht_tqueue_init(&testQ, 3);
    struct ht_st t;
    ht_tqueue_enqueue(&testQ, &t);
-   if(1 != ht_tqueue_elements(&testQ))
-   {
-      printf("error: ht_tqueue_elements did not return expected result.\n");
-      exit(1);
-   }
+   HT_TEST_ASSERT(1 != ht_tqueue_elements(&testQ),
+                  "ht_tqueue_elements did not return expected result.");
    ht_t r = ht_tqueue_dequeue(&testQ);
-   if(r != &t)
-   {
-      printf("error: ht_tqueue_dequeue did not return expected result.\n");
-      exit(1);
-   }
+   HT_TEST_ASSERT(r != &t,
+                  "ht_tqueue_dequeue did not return expected result.");
    ht_tqueue_destroy(&testQ);
 }
 
@@ -42,13 +36,12 @@ test2()
    time_t start, end;
    time(&start);
    pthread_create(&t, NULL, test2_worker, (void*) &q);
+   HT_TEST_ASSERT(0 != ht_tqueue_elements(&q), 
+			         "ht_tqueue_elements did not return expected value.");
    ht_tqueue_dequeue(&q);
    time(&end);
-   if(end - start < 3)
-   {
-      printf("error: ht_tqueue_dequeue did not block when queue is empty\n");
-      exit(1);
-   }
+   HT_TEST_ASSERT((end - start < 3),
+                  "error: ht_tqueue_dequeue did not block when queue is empty");
    ht_tqueue_destroy(&q);
 }
 
@@ -74,13 +67,12 @@ test3()
    time_t start, end;
    time(&start);
    pthread_create(&t, NULL, test3_worker, (void*) &q);
+	HT_TEST_ASSERT(0 == ht_tqueue_elements(&q), 
+			         "ht_tqueue_elements did not return expected value.");
    ht_tqueue_enqueue(&q, NULL);
    time(&end);
-   if(end - start < 3)
-   {
-      printf("error: ht_tqueue_enqueue did not block when queue is full\n");
-      exit(1);
-   }
+   HT_TEST_ASSERT(end - start < 3, 
+			         "ht_tqueue_enqueue did not block when queue is full.");
    ht_tqueue_destroy(&q);
 }
 
