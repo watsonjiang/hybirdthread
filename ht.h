@@ -507,8 +507,10 @@ extern ssize_t        ht_recvfrom(int, void *, size_t, int, struct sockaddr *, s
 extern ssize_t        ht_sendto(int, const void *, size_t, int, const struct sockaddr *, socklen_t);
 extern ssize_t        ht_pread(int, void *, size_t, off_t);
 extern ssize_t        ht_pwrite(int, const void *, size_t, off_t);
-
-END_DECLARATION
+    
+    /* hybird thread interaction functions */
+extern int            ht_hand_out();
+extern int            ht_get_back();
 
     /* soft system call mapping support */
 #if HT_SYSCALL_SOFT && !defined(_HT_PRIVATE)
