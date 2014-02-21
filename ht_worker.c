@@ -35,7 +35,6 @@ _ht_worker(void * argv)
       ht_debug2("ht_worker: %s", buf); 
       worker_ctx.task = t;
       swapcontext(&worker_ctx.worker_mctx, &t->mctx.uc);
-      printf("4444444444\n");
       snprintf(buf, 255, "worker %d back from thread \"%s\"",
                 id, t->name);
       ht_debug2("ht_worker: %s", buf);
@@ -81,9 +80,7 @@ ht_hand_out()
    /* set the thread to WAIT_FOR_SCHED_TO_WORKER 
 	  and transfer control to scheduler */
 	ht_current->state = HT_STATE_WAITING_FOR_SCHED_TO_WORKER;
-   printf("1111111111111\n");
 	ht_yield(NULL);
-   printf("2222222222222i\n");
    return 0;
 }
 
@@ -92,7 +89,7 @@ ht_get_back()
 {
    ht_worker_ctx_t* worker_ctx = (ht_worker_ctx_t*) pthread_getspecific(_ht_worker_ctx_key);
    ht_t t = worker_ctx->task;
-   printf("333333333333\n");
    swapcontext(&t->mctx.uc, &worker_ctx->worker_mctx);
+	ht_event_free(ht_current->events, HT_FREE_ALL);
    return 0;
 }

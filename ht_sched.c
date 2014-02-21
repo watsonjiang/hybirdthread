@@ -320,6 +320,7 @@ ht_sched_eventmanager(ht_time_t *now, int dopoll)
     int fdmax;
     int rc;
     int n;
+	 ht_time_t event_task_check_interval = ht_time(0, 10000);  // 10 msec
 
     ht_debug2("ht_sched_eventmanager: enter in %s mode",
                dopoll ? "polling" : "waiting");
@@ -385,6 +386,17 @@ ht_sched_eventmanager(ht_time_t *now, int dopoll)
 					 else if (ev->ev_type == HT_EVENT_TASK) {
 						  if (ev->ev_args.TASK.fini != 0)
                         this_occurred = TRUE;
+                    else {     //schedule a timer for next check.
+                        ht_time_t tv;
+                        ht_time_set(&tv, now);
+                        ht_time_add(&tv, &event_task_check_interval);  
+                        if ((nexttimer_thread == NULL && nexttimer_ev == NULL) ||
+                            ht_time_cmp(&tv, &nexttimer_value) < 0) {
+                            nexttimer_thread = t;
+                            nexttimer_ev = ev;
+                            ht_time_set(&nexttimer_value, &tv);
+                        }
+                    }
 					 }
                 /* Timer */
                 else if (ev->ev_type == HT_EVENT_TIME) {
