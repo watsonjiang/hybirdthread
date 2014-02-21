@@ -1,9 +1,5 @@
 #include "ht_p.h"
 
-/* calculate numerical mimimum */
-#define ht_util_min(a,b) \
-        ((a) > (b) ? (b) : (a))
-
 /* copy a string like strncpy() but always null-terminate */
 char *
 ht_util_cpystrn(char *dst, const char *src, size_t dst_size)
