@@ -18,5 +18,6 @@ main()
 {
    ht_init();
    test1();
+   ht_kill();
    return 0;
 }

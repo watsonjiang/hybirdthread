@@ -175,6 +175,7 @@ extern unsigned int ht_tqueue_elements(ht_tqueue_t *);
 extern void ht_tqueue_destroy(ht_tqueue_t *);
 /* ht_worker.c */
 extern int ht_worker_init(int);
+extern int ht_worker_kill();
 /* ht_pqueue.c */
 typedef struct ht_pqueue_st ht_pqueue_t;
 struct ht_pqueue_st {

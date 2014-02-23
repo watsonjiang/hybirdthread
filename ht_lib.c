@@ -91,6 +91,7 @@ ht_kill(void)
     if (ht_current != ht_main)
         return ht_error(FALSE, EPERM);
     ht_debug1("ht_kill: enter");
+    ht_worker_kill();
     ht_thread_cleanup(ht_main);
     ht_scheduler_kill();
     ht_initialized = FALSE;
@@ -447,7 +448,7 @@ ht_yield(ht_t to)
         ht_debug1("ht_yield: give up control to scheduler");
     ht_mctx_switch(&ht_current->mctx, &ht_sched->mctx);
     ht_debug1("ht_yield: got back control from scheduler");
-
+    
     ht_debug2("ht_yield: leave to thread \"%s\"", ht_current->name);
     return TRUE;
 }
