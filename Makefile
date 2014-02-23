@@ -18,7 +18,7 @@ OBJS=ht_errno.o ht_string.o ht_debug.o ht_util.o ht_attr.o ht_time.o ht_pqueue.o
 
 BINS=libht.so
 
-TEST_BINS=ht_tqueue_test ht_worker_test ht_std_test
+TEST_BINS=ht_tqueue_test ht_worker_test ht_std_test ht_mp_test
 
 all: $(BINS)
 
@@ -36,6 +36,9 @@ ht_worker_test: libht.so ht_worker_test.o
 
 ht_std_test: libht.so ht_std_test.o
 	gcc ${CLAGS} -L. -lht -lpthread -o $@ ht_std_test.o
+
+ht_mp_test: libht.so ht_mp_test.o
+	gcc ${CLAGS} -L. -lht -lpthread -o $@ ht_mp_test.o
 
 clean:
 	rm -rf $(BINS) $(TEST_BINS) *.o
