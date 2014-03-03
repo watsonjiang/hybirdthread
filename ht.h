@@ -512,32 +512,7 @@ extern ssize_t        ht_pwrite(int, const void *, size_t, off_t);
 extern int            ht_hand_out();
 extern int            ht_get_back();
 
-    /* soft system call mapping support */
-#if HT_SYSCALL_SOFT && !defined(_HT_PRIVATE)
-#define fork          ht_fork
-#define waitpid       ht_waitpid
-#define system        ht_system
-#define nanosleep     ht_nanosleep
-#define usleep        ht_usleep
-#define sleep         ht_sleep
-#define sigprocmask   ht_sigmask
-#define sigwait       ht_sigwait
-#define select        ht_select
-#define pselect       ht_pselect
-#define poll          ht_poll
-#define connect       ht_connect
-#define accept        ht_accept
-#define read          ht_read
-#define write         ht_write
-#define readv         ht_readv
-#define writev        ht_writev
-#define recv          ht_recv
-#define send          ht_send
-#define recvfrom      ht_recvfrom
-#define sendto        ht_sendto
-#define pread         ht_pread
-#define pwrite        ht_pwrite
-#endif
+END_DECLARATION
 
     /* backward compatibility (Pth < 1.5.0) */
 #define ht_event_occurred(ev) \
