@@ -501,8 +501,9 @@ ht_sched_eventmanager(ht_time_t *now, int dopoll)
 
     /* if the timer elapsed, handle it */
     if (!dopoll && rc == 0 && nexttimer_ev != NULL) {
-        if (nexttimer_ev->ev_type == HT_EVENT_FUNC) {
-            /* it was an implicit timer event for a function event,
+        if (nexttimer_ev->ev_type == HT_EVENT_FUNC 
+              || nexttimer_ev->ev_type == HT_EVENT_TASK) {
+            /* it was an implicit timer event for a function event or task event,
                so repeat the event handling for rechecking the function */
             loop_repeat = TRUE;
         }
